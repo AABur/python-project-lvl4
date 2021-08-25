@@ -679,8 +679,8 @@ brotli = ["brotli"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9"
-content-hash = "7b2bec4fd07af8e0379b543e604a42d0e4414e7f114a90c4ad13a46c38600bf8"
+python-versions = "3.9.2"
+content-hash = "32ccc1d0c9505403cdd68bdd93cbdd286c3ded8511caf949b658aa313da58dfd"
 
 [metadata.files]
 add-trailing-comma = [
