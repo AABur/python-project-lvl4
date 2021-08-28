@@ -1,0 +1,9 @@
+{% if latest_user_list %}
+    <ul>
+    {% for user in latest_user_list %}
+        <li><a href="/users/{{ user.id }}/">{{ user.full_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users found.</p>
+{% endif %}
