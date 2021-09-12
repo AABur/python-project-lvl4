@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 
-def index(request):
-    return HttpResponse("Привет от Сан Саныча!")
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
+
+class UsersPageView(TemplateView):
+    template_name = 'users.html'
