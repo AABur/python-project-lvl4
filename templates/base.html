@@ -1,7 +1,9 @@
 {% load i18n %}
 
 <header>
-    <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> | <a href="{% url 'users' %}">{% trans 'Users' %}</a>
+    <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> |
+    <a href="{% url 'users' %}">{% trans 'Users' %}</a> |
+    <a href="{% url 'login' %}">{% trans 'Login' %}</a>
 </header>
 
 {% block content %}

@@ -7,3 +7,7 @@ class HomePageView(TemplateView):
 
 class UsersPageView(TemplateView):
     template_name = 'users.html'
+
+
+class LoginPageView(TemplateView):
+    template_name = 'login.html'
