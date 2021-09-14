@@ -1,5 +1,15 @@
 {% load i18n %}
 
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 <header>
     <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> |
     <a href="{% url 'users' %}">{% trans 'Users' %}</a> |
