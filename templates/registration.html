@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h1>{% trans 'Registration' %}</h1>
+{% bootstrap_button 'Registration' button_type='submit' button_class='btn-primary' %}
+{% endblock %}
