@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 import django_heroku
+from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -116,9 +117,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+]
+
+LOCALE_PATHS = [
+    Path(BASE_DIR, 'locale'),
+]
+
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
