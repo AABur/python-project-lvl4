@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 19:48+0300\n"
+"POT-Creation-Date: 2021-09-20 10:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,34 +20,51 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/settings.py:123
+#: task_manager/settings.py:125
 msgid "English"
 msgstr ""
 
-#: task_manager/settings.py:124
+#: task_manager/settings.py:126
 msgid "Russian"
 msgstr "Русский"
 
-#: templates/base.html:14
+#: templates/base.html:15 templates/base.html:22
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:15 templates/users.html:6
+#: templates/base.html:16 templates/base.html:23 templates/users.html:6
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:16 templates/login.html:6
+#: templates/base.html:17
+msgid "Statuses"
+msgstr "Статусы"
+
+#: templates/base.html:18
+msgid "Labels"
+msgstr "Метки"
+
+#: templates/base.html:19
+msgid "Tasks"
+msgstr "Задачи"
+
+#: templates/base.html:20
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/base.html:24 templates/registration/login.html:6
+#: templates/registration/login.html:10
 msgid "Login"
 msgstr "Вход"
 
-#: templates/base.html:17 templates/registration.html:6
+#: templates/base.html:25 templates/registration.html:6
 msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/home.html:5
+#: templates/home.html:8
 msgid "Hello from Hexlet!"
 msgstr "Привет от Хекслета"
 
-#: templates/home.html:6
+#: templates/home.html:9
 msgid "Practical programming courses"
 msgstr "Практические курсы по программированию"
