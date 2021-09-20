@@ -11,10 +11,19 @@
 {% bootstrap_messages %}
 
 <header>
-    <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> 
-    <a href="{% url 'users' %}">{% trans 'Users' %}</a> 
-    <a href="{% url 'login' %}" >{% trans 'Login' %}</a> 
-    <a href="{% url 'registration' %}">{% trans 'Registration' %}</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> 
+        <a href="{% url 'users' %}">{% trans 'Users' %}</a> 
+        <a href="{% url 'statuses' %}" >{% trans 'Statuses' %}</a> 
+        <a href="{% url 'labels' %}" >{% trans 'Labels' %}</a> 
+        <a href="{% url 'tasks' %}">{% trans 'Tasks' %}</a>
+        <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+    {% else %}
+        <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> 
+        <a href="{% url 'users' %}">{% trans 'Users' %}</a> 
+        <a href="{% url 'login' %}" >{% trans 'Login' %}</a> 
+        <a href="{% url 'registration' %}">{% trans 'Registration' %}</a>
+    {% endif %}
 </header>
 
 {% block content %}

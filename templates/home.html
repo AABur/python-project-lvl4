@@ -2,6 +2,9 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans 'Hello from Hexlet!' %}</h1>
-<p>{% trans 'Practical programming courses' %}</p>
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+    {% endif %}
+    <h1>{% trans 'Hello from Hexlet!' %}</h1>
+    <p>{% trans 'Practical programming courses' %}</p>
 {% endblock content %}
