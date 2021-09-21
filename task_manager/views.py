@@ -1,14 +1,11 @@
-from task_manager.forms import SignUpForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
+from task_manager.forms import SignUpForm
 
-class Home(TemplateView):
+
+class HomeView(TemplateView):
     template_name = 'home.html'
-
-
-class Registration(TemplateView):
-    template_name = 'registration.html'
 
 
 class SignUpView(CreateView):
@@ -17,5 +14,5 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'
 
 
-class Users(TemplateView):
+class UsersView(TemplateView):
     template_name = 'users.html'
