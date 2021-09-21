@@ -1,17 +1,13 @@
 from django.views.generic import TemplateView
 
 
-class HomePageView(TemplateView):
+class Home(TemplateView):
     template_name = 'home.html'
 
 
-class UsersPageView(TemplateView):
+class Users(TemplateView):
     template_name = 'users.html'
 
 
-class LoginPageView(TemplateView):
-    template_name = 'login.html'
-
-
-class RegistrationPageView(TemplateView):
+class Registration(TemplateView):
     template_name = 'registration.html'
