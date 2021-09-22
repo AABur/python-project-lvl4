@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load bootstrap4 %}
 
-{% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
+  <h1>{% trans 'Sign up' %}</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign Up</button>
+    {% bootstrap_button _('Sign up') button_type='submit' button_class='btn-primary' %}
   </form>
 {% endblock %}
