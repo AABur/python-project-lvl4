@@ -1,8 +1,11 @@
+from users.tables import UserTable
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView
 
 from task_manager.forms import SignUpForm
+
+from django_tables2 import SingleTableView
 
 
 class HomeView(TemplateView):
@@ -15,6 +18,7 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'
 
 
-class UsersView(ListView):
+class UsersView(SingleTableView):
     template_name = 'users.html'
     model = User
+    table_class = UserTable
