@@ -89,6 +89,8 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+AUTH_USER_MODEL = 'users.TMUser'
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
