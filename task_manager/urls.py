@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 
-from .views import HomeView, SignUpView, UsersView
+from .views import HomeView, SignUpView, UserDelete, UserDetailView, UserUpdate, UsersView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +31,12 @@ urlpatterns += [
     path('', TemplateView.as_view(template_name='home.html'), name='statuses'),
     path('', TemplateView.as_view(template_name='home.html'), name='labels'),
     path('', TemplateView.as_view(template_name='home.html'), name='tasks'),
+]
+
+# Add URLConf to create, update, and delete users
+urlpatterns += [
+    path('user/<int:pk>', UserDetailView.as_view(), name='user-detail'),
+    # path('user/create/', UserCreate.as_view(), name='user-create'),
+    path('user/<int:pk>/update/', UserUpdate.as_view(), name='user-update'),
+    path('user/<int:pk>/delete/', UserDelete.as_view(), name='user-delete'),
 ]
