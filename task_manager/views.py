@@ -46,8 +46,8 @@ class UserDetailView(DetailView):
 
 
 class UserLogin(SuccessMessageMixin, LoginView):
+    template_name = 'registration/login.html'
     success_message = "Success login"
-    success_url = reverse_lazy('users')
 
 
 class UserLogout(SuccessMessageMixin, LoginView):
