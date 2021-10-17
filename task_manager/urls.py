@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 
-from .views import HomeView, SignUpView, UserDelete, UserDetailView, UserUpdate, UsersView
+from .views import HomeView, SignUpView, UserDelete, UserDetailView, UserLogin, UserUpdate, UsersView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,4 +39,5 @@ urlpatterns += [
     # path('user/create/', UserCreate.as_view(), name='user-create'),
     path('user/<int:pk>/update/', UserUpdate.as_view(), name='user-update'),
     path('user/<int:pk>/delete/', UserDelete.as_view(), name='user-delete'),
+    path('login/', UserLogin.as_view(), name='login'),
 ]

@@ -8,7 +8,6 @@
 {% bootstrap_javascript jquery='full' %}
 
 {# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
 
 <header>
     {% if user.is_authenticated %}
@@ -26,5 +25,8 @@
     {% endif %}
 </header>
 
+{% bootstrap_messages %}
+
 {% block content %}
+
 {% endblock %}
