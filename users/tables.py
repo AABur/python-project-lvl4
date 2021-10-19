@@ -6,9 +6,10 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 
 
-class UserTable(tables.Table):
+class UsersListTable(tables.Table):
     TEMPLATE = '''
         <a href="{% url 'user-update' record.pk %}" class="tbl_icon edit">Edit</a>
+        <br>
         <a href="{% url 'user-delete' record.pk %}" class="tbl_icon delete">Delete</a>
     '''
 

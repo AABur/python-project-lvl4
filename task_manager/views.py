@@ -8,7 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 from users.forms import TMUserCreationForm
 from users.models import TMUser
-from users.tables import UserTable
+from users.tables import UsersListTable
 
 
 class HomeView(TemplateView):
@@ -26,16 +26,16 @@ class SignUpView(SuccessMessageMixin, CreateView):
 class UsersView(SingleTableView):
     template_name = 'users.html'
     model = TMUser
-    table_class = UserTable
+    table_class = UsersListTable
 
 
-class UserUpdate(UpdateView):
+class UserUpdateView(UpdateView):
     model = TMUser
     # Not recommended (potential security issue if more fields added)
     fields = '__all__'
 
 
-class UserDelete(DeleteView):
+class UserDeleteView(DeleteView):
     model = TMUser
     success_url = reverse_lazy('users')
 
@@ -45,11 +45,11 @@ class UserDetailView(DetailView):
     model = TMUser
 
 
-class UserLogin(SuccessMessageMixin, LoginView):
+class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'registration/login.html'
     success_message = "Success login"
 
 
-class UserLogout(SuccessMessageMixin, LoginView):
+class UserLogoutView(SuccessMessageMixin, LoginView):
     success_message = "Success logout"
     success_url = reverse_lazy('users')
