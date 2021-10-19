@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
+from django.contrib.auth import views as auth_views
 
 from .views import HomeView, SignUpView, UserDeleteView, UserDetailView, UserLoginView, UserLogoutView, UserUpdateView, UsersView
 
@@ -38,5 +39,5 @@ urlpatterns += [
     path('user/<int:pk>/update/', UserUpdateView.as_view(), name='user-update'),
     path('user/<int:pk>/delete/', UserDeleteView.as_view(), name='user-delete'),
     path('login/', UserLoginView.as_view(), name='login'),
-    path('logout/', UserLogoutView.as_view(), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
