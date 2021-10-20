@@ -23,7 +23,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
     success_message = "User was created successfully"
 
 
-class UsersView(SingleTableView):
+class UsersListView(SingleTableView):
     template_name = 'users.html'
     model = TMUser
     table_class = UsersListTable

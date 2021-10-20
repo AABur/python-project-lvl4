@@ -18,13 +18,13 @@ from django.urls import include, path
 from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
 
-from .views import HomeView, SignUpView, UserDeleteView, UserDetailView, UserLoginView, UserLogoutView, UserUpdateView, UsersView
+from .views import HomeView, SignUpView, UserDeleteView, UserDetailView, UserLoginView, UserLogoutView, UserUpdateView, UsersListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
     path('users/create/', SignUpView.as_view(), name='signup'),
-    path('users/', UsersView.as_view(), name='users'),
+    path('users/', UsersListView.as_view(), name='users'),
 ]
 urlpatterns += [
     # ! path('', include('django.contrib.auth.urls')),

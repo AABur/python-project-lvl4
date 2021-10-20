@@ -2,8 +2,8 @@ import django_tables2 as tables
 from django_tables2.utils import A
 
 from users.models import TMUser
-from django.utils.safestring import mark_safe
-from django.urls import reverse
+
+from django.utils.translation import ugettext_lazy as _
 
 
 class UsersListTable(tables.Table):
@@ -13,13 +13,28 @@ class UsersListTable(tables.Table):
         <a href="{% url 'user-delete' record.pk %}" class="tbl_icon delete">Delete</a>
     '''
 
-    control = tables.TemplateColumn(
+    control_field = tables.TemplateColumn(
         TEMPLATE,
         empty_values=(),
         verbose_name=''
     )
 
+    full_name = tables.Column(
+        accessor='full_name',
+        verbose_name=_('Full name'),
+    )
+
+    date_created = tables.DateTimeColumn(
+        accessor='date_joined',
+        verbose_name=_('Creation date')
+    )
+
     class Meta:
         model = TMUser
-        template_name = "django_tables2/bootstrap.html"
-        fields = ('id', "username", 'full_name', 'date_joined')
+        orderable = False
+        template_name = "django_tables2/bootstrap4.html"
+        fields = ('id', "username", 'full_name', 'date_created')
+        attrs = {
+            'class': 'table table-striped',
+            'id': 'userTable'
+        }
