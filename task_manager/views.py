@@ -30,9 +30,9 @@ class UsersListView(SingleTableView):
 
 
 class UserUpdateView(UpdateView):
+    template_name = 'users/user_update.html'
     model = TMUser
-    # Not recommended (potential security issue if more fields added)
-    fields = '__all__'
+    fields = ('first_name', 'last_name', 'username', 'password')
 
 
 class UserDeleteView(DeleteView):
