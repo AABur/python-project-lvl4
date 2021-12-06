@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 12:53+0300\n"
+"POT-Creation-Date: 2021-12-02 13:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Русский"
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:15 templates/base.html:22 templates/users.html:7
+#: templates/base.html:15 templates/base.html:22 templates/users.html:8
 msgid "Users"
 msgstr "Пользователи"
 
@@ -58,6 +58,7 @@ msgid "Login"
 msgstr "Вход"
 
 #: templates/base.html:24 templates/registration.html:6
+#: templates/registration.html:7
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -72,6 +73,14 @@ msgstr "Практические курсы по программировани�
 #: templates/registration/signup.html:7 templates/registration/signup.html:11
 msgid "Sign up"
 msgstr "Регистрация"
+
+#: templates/users/tmuser_confirm_delete.html:8
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
+#: templates/users/tmuser_confirm_delete.html:10
+msgid "Are you sure you want to delete the user:"
+msgstr "Вы уверены, что хотите удалить"
 
 #: users/tables.py:24
 msgid "Full name"
