@@ -5,9 +5,9 @@
 
 {% block content %}
 
-<h1>Delete Author</h1>
+<h1>{% trans 'Delete user' %}</h1>
 
-<p>Are you sure you want to delete the author: {{ author }}?</p>
+<p>{% trans 'Are you sure you want to delete the user:' %} {{ user }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
