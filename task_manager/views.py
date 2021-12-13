@@ -43,6 +43,7 @@ class UserDeleteView(DeleteView):
 class UserDetailView(DetailView):
     """Generic class-based detail view for an author."""
     model = TMUser
+    success_message = "Success DELETE"
 
 
 class UserLoginView(SuccessMessageMixin, LoginView):
