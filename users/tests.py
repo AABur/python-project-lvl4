@@ -1,3 +1,5 @@
+from django import urls
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 import pytest
@@ -12,3 +14,23 @@ def test_user_create():
         username="john@gmail.com",
     )
     assert user.full_name() == "John Doe"
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('param', [
+    ('home'),
+    ('signup'),
+    ('users'),
+    ('statuses'),
+    ('labels'),
+    ('tasks'),
+    ('user-detail'),
+    ('user-update'),
+    ('user-delete'),
+    ('login'),
+    ('logout'),
+])
+def test_render_views(client, param):
+    temp_url = urls.reverse(param)
+    resp = client.get(temp_url)
+    assert resp.status_code == 200
