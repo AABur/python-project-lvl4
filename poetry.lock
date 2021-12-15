@@ -159,6 +159,18 @@ beautifulsoup4 = ">=4.8.0"
 Django = ">=2.2"
 
 [[package]]
+name = "django-coverage-plugin"
+version = "2.0.2"
+description = "Django template coverage.py plugin"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+coverage = "*"
+six = ">=1.4.0"
+
+[[package]]
 name = "django-heroku"
 version = "0.3.1"
 description = "This is a Django library for Heroku apps."
@@ -863,7 +875,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "78d6e5c733e85d02765b5d035227052176e0662f45e320045dbeb2f1970cd296"
+content-hash = "214594a3d7f0134e2b9aa59a8e57e14acd444b1c173f07fb13ef1bea0bf0a88d"
 
 [metadata.files]
 asgiref = [
@@ -966,6 +978,10 @@ django = [
 django-bootstrap4 = [
     {file = "django-bootstrap4-3.0.1.tar.gz", hash = "sha256:c5c97fb473bb56e3a91b4f4be52b74a3fc384ec3baae50dd0807fa922a55ec2b"},
     {file = "django_bootstrap4-3.0.1-py3-none-any.whl", hash = "sha256:aa8a9cb5ab27cfae52a27d377a0401af268d0e4b91a5f8e660546464582cc010"},
+]
+django-coverage-plugin = [
+    {file = "django_coverage_plugin-2.0.2-py3-none-any.whl", hash = "sha256:4206c85ffba0301f83aecc38e5b01b1b9a4b45a545d9456a827e3fabea18d952"},
+    {file = "django_coverage_plugin-2.0.2.tar.gz", hash = "sha256:e91e3a0c8de2b3766a144cdd30dbbf7a79e5c532a5dcc1373ce7eaad83b358b3"},
 ]
 django-heroku = [
     {file = "django-heroku-0.3.1.tar.gz", hash = "sha256:6af4bc3ae4a9b55eaad6dbe5164918982d2762661aebc9f83d9fa49f6009514e"},
