@@ -2,7 +2,7 @@ install: ## install dependencies
 	@poetry install
 
 test: ## run tests
-	poetry run coverage run --source=. -m pytest tests
+	poetry run pytest --cov
 
 lint: ## run linter
 	poetry run flake8 .
@@ -22,9 +22,6 @@ build: ## check and build a package
 package-install: ## build and install
 	make build
 	pip install dist/*.whl
-
-cc-coverage: ## prepare coverage report for Codeclimate
-	poetry run coverage xml
 
 run: ## run local server
 	poetry run python manage.py runserver 127.0.0.1:8081
