@@ -19,12 +19,12 @@ class HomeView(TemplateView):
 class SignUpView(SuccessMessageMixin, CreateView):
     form_class = TMUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'registration/signup.html'
+    template_name = 'users/signup.html'
     success_message = "User was created successfully"
 
 
 class UsersListView(SingleTableView):
-    template_name = 'users.html'
+    template_name = 'users/users_list.html'
     model = TMUser
     table_class = UsersListTable
 
@@ -36,18 +36,18 @@ class UserUpdateView(UpdateView):
 
 
 class UserDeleteView(DeleteView):
+    template_name = 'users/user_delete.html'
     model = TMUser
     success_url = reverse_lazy('users')
 
 
 class UserDetailView(DetailView):
-    """Generic class-based detail view for an author."""
     model = TMUser
     success_message = "Success DELETE"
 
 
 class UserLoginView(SuccessMessageMixin, LoginView):
-    template_name = 'registration/login.html'
+    template_name = 'login.html'
     success_message = "Success login"
 
 
