@@ -4,10 +4,12 @@
 
 
 {% block content %}
+<div class="container">
   <h1>{% trans 'Sign up' %}</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     {% bootstrap_button _('Sign up') button_type='submit' button_class='btn-primary' %}
   </form>
+</div>
 {% endblock %}

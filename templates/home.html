@@ -4,9 +4,12 @@
 
 
 {% block content %}
+<div class="container">
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
     {% endif %}
     <h1>{% trans 'Hello from Hexlet!' %}</h1>
     <p>{% trans 'Practical programming courses' %}</p>
+    {% bootstrap_button "Узнать болльше" button_type="link" href="https://ru.hexlet.io/" %}
+</div>
 {% endblock content %}

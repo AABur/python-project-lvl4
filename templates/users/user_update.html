@@ -3,14 +3,15 @@
 {% load bootstrap4 %}
 
 
-
 {% block content %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit" />
-</form>
+    <div class="container">
+        <h1>{% trans 'Change user' %}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons submit='Change' %}{% endbuttons %}
+        </form>
+    </div>
+
 {% endblock %}

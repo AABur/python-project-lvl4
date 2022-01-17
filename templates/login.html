@@ -3,10 +3,12 @@
 {% load bootstrap4 %}
 
 {% block content %}
+<div class="container">
     <h1>{% trans 'Login' %}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
     {% bootstrap_button _('Login') button_type='submit' button_class='btn-primary' %}
     </form>
+</div>
 {% endblock %}
