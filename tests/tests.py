@@ -1,7 +1,7 @@
 from django import urls
 
 import pytest
-from .models import TMUser
+from ..users.models import TMUser
 
 
 @pytest.mark.django_db
