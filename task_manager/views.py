@@ -1,10 +1,10 @@
 from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView
 from django_tables2 import SingleTableView
-from django.contrib.messages.views import SuccessMessageMixin
 
 from users.forms import TMUserCreationForm
 from users.models import TMUser
@@ -32,7 +32,7 @@ class UsersListView(SingleTableView):
 class UserUpdateView(UpdateView):
     template_name = 'users/user_update.html'
     model = TMUser
-    fields = ('first_name', 'last_name', 'username', 'password')
+    form_class = TMUserCreationForm
 
 
 class UserDeleteView(DeleteView):
