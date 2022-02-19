@@ -14,30 +14,55 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
-from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
+from django.urls import path
+from django.views.generic.base import TemplateView
 
-from .views import HomeView, SignUpView, UserDeleteView, UserDetailView, UserLoginView, UserLogoutView, UserUpdateView, UsersListView
+from task_manager.statuses.views import (
+    StaturDeleteView,
+    StatusCreateView,
+    StatusesListView,
+    StatusUpdateView,
+)
+
+from .views import (
+    HomeView,
+    SignUpView,
+    UserDeleteView,
+    UserDetailView,
+    UserLoginView,
+    UsersListView,
+    UserUpdateView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
-    path('users/create/', SignUpView.as_view(), name='signup'),
-    path('users/', UsersListView.as_view(), name='users'),
-]
-urlpatterns += [
-    # ! path('', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='statuses'),
+    path('login/', UserLoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', TemplateView.as_view(template_name='home.html'), name='labels'),
     path('', TemplateView.as_view(template_name='home.html'), name='tasks'),
 ]
 
-# Add URLConf to create, update, and delete users
 urlpatterns += [
+    path('users/', UsersListView.as_view(), name='users'),
+    path('users/create/', SignUpView.as_view(), name='signup'),
     path('user/<int:pk>', UserDetailView.as_view(), name='user-detail'),
     path('user/<int:pk>/update/', UserUpdateView.as_view(), name='user-update'),
     path('user/<int:pk>/delete/', UserDeleteView.as_view(), name='user-delete'),
-    path('login/', UserLoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+]
+
+urlpatterns += [
+    path('statuses/', StatusesListView.as_view(), name='statuses'),
+    path('statuses/create/', StatusCreateView.as_view(), name='status-create'),
+    path(
+        'statuses/<int:pk>/update/',
+        StatusUpdateView.as_view(),
+        name='status-update',
+    ),
+    path(
+        'statuses/<int:pk>/delete/',
+        StaturDeleteView.as_view(),
+        name='status-delete',
+    ),
 ]
