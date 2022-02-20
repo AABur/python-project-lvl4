@@ -3,13 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 from users.models import TMUser
 
+TEMPLATE = '''
+    <a href="{% url 'user-update' record.pk %}">Edit</a>
+    <br>
+    <a href="{% url 'user-delete' record.pk %}">Delete</a>
+'''
+
 
 class UsersListTable(tables.Table):
-    TEMPLATE = '''
-        <a href="{% url 'user-update' record.pk %}" class="tbl_icon edit">Edit</a>
-        <br>
-        <a href="{% url 'user-delete' record.pk %}" class="tbl_icon delete">Delete</a>
-    '''
 
     control_field = tables.TemplateColumn(
         TEMPLATE,

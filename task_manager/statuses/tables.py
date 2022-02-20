@@ -3,13 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.statuses.models import Status
 
+TEMPLATE = '''
+    <a href="{% url 'status-update' record.pk %}">Edit</a>
+    <br>
+    <a href="{% url 'status-delete' record.pk %}">Delete</a>
+'''
+
 
 class StatusesListTable(tables.Table):
-    TEMPLATE = '''
-        <a href="{% url 'status-update' record.pk %}" class="tbl_icon edit">Edit</a>
-        <br>
-        <a href="{% url 'status-delete' record.pk %}" class="tbl_icon delete">Delete</a>
-    '''
 
     control_field = tables.TemplateColumn(
         TEMPLATE,
