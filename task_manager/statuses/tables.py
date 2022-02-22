@@ -18,11 +18,6 @@ class StatusesListTable(tables.Table):
         verbose_name=''
     )
 
-    date_created = tables.DateTimeColumn(
-        accessor='date_joined',
-        verbose_name=_('Creation date')
-    )
-
     class Meta:
         model = Status
         orderable = False
