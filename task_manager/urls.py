@@ -19,10 +19,10 @@ from django.urls import path
 from django.views.generic.base import TemplateView
 
 from task_manager.statuses.views import (
-    StaturDeleteView,
+    StatusDeleteView,
     StatusCreateView,
     StatusesListView,
-    StatusUpdateView,
+    StatusChangeView,
 )
 from users.views import (
     SignUpView,
@@ -55,12 +55,12 @@ urlpatterns += [
     path('statuses/create/', StatusCreateView.as_view(), name='status-create'),
     path(
         'statuses/<int:pk>/update/',
-        StatusUpdateView.as_view(),
+        StatusChangeView.as_view(),
         name='status-update',
     ),
     path(
         'statuses/<int:pk>/delete/',
-        StaturDeleteView.as_view(),
+        StatusDeleteView.as_view(),
         name='status-delete',
     ),
 ]
