@@ -1,6 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
 from task_manager.statuses.forms import StatusForm
@@ -30,7 +30,8 @@ class StatusChangeView(SuccessMessageMixin, UpdateView):
     success_message = "Status successfully changed"
 
 
-class StatusDeleteView(SingleTableView):
-    template_name = 'statuses/statuses_list.html'
+class StatusDeleteView(SuccessMessageMixin, DeleteView):
     model = Status
-    table_class = StatusesListTable
+    template_name = 'statuses/delete.html'
+    success_url = reverse_lazy('statuses')
+    success_message = "Status successfully deleted"
