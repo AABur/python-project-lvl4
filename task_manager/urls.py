@@ -18,12 +18,6 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.views.generic.base import TemplateView
 
-from task_manager.statuses.views import (
-    StatusDeleteView,
-    StatusCreateView,
-    StatusesListView,
-    StatusChangeView,
-)
 from users.views import (
     SignUpView,
     UserDeleteView,
@@ -31,6 +25,20 @@ from users.views import (
     UsersListView,
     UserUpdateView,
 )
+from task_manager.statuses.views import (
+    StatusDeleteView,
+    StatusCreateView,
+    StatusesListView,
+    StatusChangeView,
+)
+from task_manager.tasks.views import (
+    TaskDeleteView,
+    TaskCreateView,
+    TasksListView,
+    TaskChangeView,
+    TaskView,
+)
+
 
 from .views import HomeView, UserLoginView
 
@@ -63,4 +71,20 @@ urlpatterns += [
         StatusDeleteView.as_view(),
         name='status-delete',
     ),
+]
+
+urlpatterns += [
+    path('tasks/', TasksListView.as_view(), name='tasks'),
+    path('tasks/create/', TaskCreateView.as_view(), name='task-create'),
+    path(
+        'tasks/<int:pk>/update/',
+        TaskChangeView.as_view(),
+        name='task-update',
+    ),
+    path(
+        'tasks/<int:pk>/delete/',
+        TaskDeleteView.as_view(),
+        name='task-delete',
+    ),
+    path('<int:pk>/', TaskView.as_view(), name='view_task'),
 ]
