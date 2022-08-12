@@ -3,9 +3,9 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView, DetailView
 from django_tables2 import SingleTableView
 
-from task_manager.tasks.forms import TaskForm
-from task_manager.tasks.models import Task
-from task_manager.tasks.tables import TasksListTable
+from tasks.forms import TaskForm
+from tasks.models import Task
+from tasks.tables import TasksListTable
 from users.models import TMUser
 
 

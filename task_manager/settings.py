@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'users',
     'task_manager.statuses',
-    'task_manager.tasks',
+    'tasks',
 ]
 
 MIDDLEWARE = [

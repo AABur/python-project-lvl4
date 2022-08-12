@@ -1,7 +1,7 @@
 import django_tables2 as tables
 from django.utils.translation import gettext_lazy as _
 
-from task_manager.tasks.models import Task
+from tasks.models import Task
 
 TEMPLATE = '''
     <a href="{% url 'task-update' record.pk %}">Edit</a>

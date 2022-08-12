@@ -31,7 +31,7 @@ from task_manager.statuses.views import (
     StatusesListView,
     StatusChangeView,
 )
-from task_manager.tasks.views import (
+from tasks.views import (
     TaskDeleteView,
     TaskCreateView,
     TasksListView,
