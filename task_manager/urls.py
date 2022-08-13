@@ -25,7 +25,7 @@ from users.views import (
     UsersListView,
     UserUpdateView,
 )
-from task_manager.statuses.views import (
+from statuses.views import (
     StatusDeleteView,
     StatusCreateView,
     StatusesListView,

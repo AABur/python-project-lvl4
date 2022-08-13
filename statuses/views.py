@@ -3,9 +3,9 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
-from task_manager.statuses.forms import StatusForm
-from task_manager.statuses.models import Status
-from task_manager.statuses.tables import StatusesListTable
+from statuses.forms import StatusForm
+from statuses.models import Status
+from statuses.tables import StatusesListTable
 
 
 class StatusesListView(SingleTableView):

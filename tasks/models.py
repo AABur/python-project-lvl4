@@ -1,7 +1,7 @@
 from django.db import models
 
 from users.models import TMUser
-from task_manager.statuses.models import Status
+from statuses.models import Status
 
 
 class Task(models.Model):

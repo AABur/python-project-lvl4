@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from task_manager.statuses.models import Status
+from statuses.models import Status
 
 
 class StatusForm(ModelForm):
