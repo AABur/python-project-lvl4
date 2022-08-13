@@ -1,4 +1,7 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import ProtectedError
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
@@ -35,3 +38,19 @@ class StatusDeleteView(SuccessMessageMixin, DeleteView):
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses')
     success_message = "Status successfully deleted"
+
+    def delete(self, request, *args, **kwargs):
+        self.get_object()
+        try:
+            super(StatusDeleteView, self).delete(self.request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(
+                self.request,
+                "It is not possible to delete the status because it is being used",
+            )
+        else:
+            messages.success(
+                self.request,
+                self.success_message,
+            )
+        return redirect(self.success_url)
