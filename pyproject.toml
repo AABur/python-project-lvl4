@@ -19,9 +19,8 @@ django-bootstrap4 = "^3.0.1"
 django-tables2 = "^2.4.0"
 
 [tool.poetry.dev-dependencies]
-wemake-python-styleguide = "^0.15.3"
+wemake-python-styleguide = "^0.16.1"
 flake8-colors = "^0.1.9"
-autopep8 = "^1.5.7"
 pytest-django = "^4.5.2"
 pytest-cov = "^3.0.0"
 pytest-html = "^3.1.1"
@@ -30,6 +29,17 @@ pytest-clarity = "^1.0.1"
 pytest = "^6.2.5"
 django-coverage-plugin = "^2.0.2"
 mypy = "^0.971"
+pyformat = "^0.7"
+isort = "^5.10.1"
+add-trailing-comma = "^2.2.3"
+flake8-pytest = "^1.4"
+flake8-pytest-style = "^1.6.0"
+flake8-django = "^1.1.5"
+django-migration-linter = "^4.1.0"
+yamllint = "^1.27.1"
+dotenv-linter = "^0.3.0"
+polint = "^0.4"
+dennis = "^1.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
