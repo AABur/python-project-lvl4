@@ -21,7 +21,6 @@ from django.views.generic.base import TemplateView
 from users.views import (
     SignUpView,
     UserDeleteView,
-    UserDetailView,
     UsersListView,
     UserUpdateView,
 )

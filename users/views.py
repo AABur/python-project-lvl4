@@ -1,10 +1,14 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
+from task_manager.mixins import AuthorizationRequiredMixin
+from tasks.models import Task
 from users.forms import TMUserCreationForm
 from users.models import TMUser
 from users.tables import UsersListTable
@@ -23,18 +27,46 @@ class UsersListView(SingleTableView):
     table_class = UsersListTable
 
 
-class UserUpdateView(UpdateView):
-    template_name = 'users/user_update.html'
-    model = TMUser
-    form_class = TMUserCreationForm
+class UserDeleteView(
+    AuthorizationRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
 
-
-class UserDeleteView(DeleteView):
     template_name = 'users/user_delete.html'
     model = TMUser
     success_url = reverse_lazy('users')
+    success_message = "SUCCESS_MESSAGE_DELETE_USER"
+
+    def delete(self, request, *args, **kwargs):
+        if Task.objects.filter(author=self.request.user.pk) or Task.objects.filter(executor=self.request.user.pk):
+            messages.error(
+                self.request,
+                "ERROR_MESSAGE_NOT_POSSIBLE_DELETE_USER"
+            )
+            return redirect(reverse_lazy('users'))
+        messages.success(self.request, self.success_message)
+        return super().delete(request, *args, **kwargs)
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.pk == self.request.user.pk
 
 
-class UserDetailView(DetailView):
+class UserUpdateView(
+    AuthorizationRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    UpdateView
+):
+
+    template_name = 'users/user_update.html'
     model = TMUser
-    success_message = "Success DELETE"
+    form_class = TMUserCreationForm
+    success_url = reverse_lazy('users')
+    success_message = "SUCCESS_MESSAGE_UPDATE_USER"
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.pk == self.request.user.pk
