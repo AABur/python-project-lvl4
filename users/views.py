@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -29,7 +28,6 @@ class UsersListView(SingleTableView):
 
 class UserDeleteView(
     AuthorizationRequiredMixin,
-    UserPassesTestMixin,
     SuccessMessageMixin,
     DeleteView
 ):
@@ -56,7 +54,6 @@ class UserDeleteView(
 
 class UserUpdateView(
     AuthorizationRequiredMixin,
-    UserPassesTestMixin,
     SuccessMessageMixin,
     UpdateView
 ):
