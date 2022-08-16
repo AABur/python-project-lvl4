@@ -35,7 +35,8 @@ class UserDeleteView(
     template_name = 'users/user_delete.html'
     model = TMUser
     success_url = reverse_lazy('users')
-    success_message = "SUCCESS_MESSAGE_DELETE_USER"
+    # TODO 'Пользователь успешно удалён'
+    success_message = 'User successfully deleted'
 
     def delete(self, request, *args, **kwargs):
         if Task.objects.filter(author=self.request.user.pk) or Task.objects.filter(executor=self.request.user.pk):
@@ -62,7 +63,8 @@ class UserUpdateView(
     model = TMUser
     form_class = TMUserCreationForm
     success_url = reverse_lazy('users')
-    success_message = "SUCCESS_MESSAGE_UPDATE_USER"
+    # TODO  'Пользователь успешно изменён'
+    success_message = 'User successfully modified'
 
     def test_func(self):
         obj = self.get_object()
