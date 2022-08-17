@@ -18,26 +18,25 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.views.generic.base import TemplateView
 
+from statuses.views import (
+    StatusChangeView,
+    StatusCreateView,
+    StatusDeleteView,
+    StatusesListView,
+)
+from tasks.views import (
+    TaskChangeView,
+    TaskCreateView,
+    TaskDeleteView,
+    TasksListView,
+    TaskView,
+)
 from users.views import (
     SignUpView,
     UserDeleteView,
     UsersListView,
     UserUpdateView,
 )
-from statuses.views import (
-    StatusDeleteView,
-    StatusCreateView,
-    StatusesListView,
-    StatusChangeView,
-)
-from tasks.views import (
-    TaskDeleteView,
-    TaskCreateView,
-    TasksListView,
-    TaskChangeView,
-    TaskView,
-)
-
 
 from .views import HomeView, UserLoginView
 

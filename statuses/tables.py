@@ -1,10 +1,9 @@
 import django_tables2 as tables
-from django.utils.translation import gettext_lazy as _
 
 from statuses.models import Status
 
 TEMPLATE = '''
-    <a href="{% url 'status-update' record.pk %}">Edit</a>
+    <a href="{% url 'status-update' record.pk %}">Change</a>
     <br>
     <a href="{% url 'status-delete' record.pk %}">Delete</a>
 '''

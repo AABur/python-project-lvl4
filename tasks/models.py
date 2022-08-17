@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from users.models import TMUser
 from statuses.models import Status
+from users.models import TMUser
 
 
 class Task(models.Model):
