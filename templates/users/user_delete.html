@@ -7,7 +7,7 @@
 
 <h1>{% trans 'Delete user' %}</h1>
 
-<p>{% trans 'Are you sure you want to delete the user:' %} {{ user }}?</p>
+<p>{% trans 'Are you sure you want to delete ' %} {{ user }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
