@@ -1,6 +1,7 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, UpdateView, DetailView
+from django.utils.translation import gettext as _
+from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_tables2 import SingleTableView
 
 from tasks.forms import TaskForm
@@ -20,7 +21,7 @@ class TaskCreateView(SuccessMessageMixin, CreateView):
     form_class = TaskForm
     template_name = 'tasks/create.html'
     success_url = reverse_lazy('tasks')
-    success_message = "Task successfully created"
+    success_message = _('Task successfully created')
 
     def form_valid(self, form):
         form.instance.author = TMUser.objects.get(pk=self.request.user.pk)
@@ -32,23 +33,16 @@ class TaskChangeView(SuccessMessageMixin, UpdateView):
     form_class = TaskForm
     template_name = 'tasks/change.html'
     success_url = reverse_lazy('tasks')
-    success_message = "Task successfully changed"
+    success_message = _('Task successfully changed')
 
 
 class TaskDeleteView(SuccessMessageMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks')
-    success_message = "Task successfully deleted"
+    success_message = _('Task successfully deleted')
 
 
 class TaskView(SuccessMessageMixin, DetailView):
     model = Task
     template_name = 'tasks/view_task.html'
-
-
-# class TaskView(
-#     HandleNoPermissionMixin,
-#     LoginRequiredMixin, SuccessMessageMixin,
-#     DetailView
-# ):
