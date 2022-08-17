@@ -49,7 +49,7 @@ locale-update: ## update locale files
 	poetry run django-admin makemessages --locale ru
 
 locale-compile: ## compile locale files
-	poetry run django-admin compilemessages
+	poetry run django-admin compilemessages --locale ru
 
 help: ## this help message
 	@echo "Available commands:"
