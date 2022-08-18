@@ -16,14 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
+from django.urls.conf import include
 from django.views.generic.base import TemplateView
 
-from statuses.views import (
-    StatusChangeView,
-    StatusCreateView,
-    StatusDeleteView,
-    StatusesListView,
-)
 from tasks.views import (
     TaskChangeView,
     TaskCreateView,
@@ -57,18 +52,7 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    path('statuses/', StatusesListView.as_view(), name='statuses'),
-    path('statuses/create/', StatusCreateView.as_view(), name='status-create'),
-    path(
-        'statuses/<int:pk>/update/',
-        StatusChangeView.as_view(),
-        name='status-update',
-    ),
-    path(
-        'statuses/<int:pk>/delete/',
-        StatusDeleteView.as_view(),
-        name='status-delete',
-    ),
+    path('statuses/', include('statuses.urls'))
 ]
 
 urlpatterns += [

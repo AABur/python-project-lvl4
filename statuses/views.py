@@ -37,7 +37,7 @@ class StatusChangeView(SuccessMessageMixin, UpdateView):
 class StatusDeleteView(SuccessMessageMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
-    success_url = reverse_lazy('statuses')
+    success_url = reverse_lazy('statuses:statuses')
     success_message = _('Status successfully deleted')
 
     def delete(self, request, *args, **kwargs):

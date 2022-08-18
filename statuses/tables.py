@@ -3,9 +3,9 @@ import django_tables2 as tables
 from statuses.models import Status
 
 TEMPLATE = '''
-    <a href="{% url 'status-update' record.pk %}">Change</a>
+    <a href="{% url 'statuses:status-update' record.pk %}">Change</a>
     <br>
-    <a href="{% url 'status-delete' record.pk %}">Delete</a>
+    <a href="{% url 'statuses:status-delete' record.pk %}">Delete</a>
 '''
 
 
