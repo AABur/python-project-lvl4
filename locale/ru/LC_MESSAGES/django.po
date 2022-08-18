@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-18 01:03+0200\n"
+"POT-Creation-Date: 2022-08-18 14:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,6 +55,18 @@ msgstr ""
 #: task_manager/settings.py:133
 msgid "Russian"
 msgstr "Русский"
+
+#: task_manager/views.py:10
+msgid "Home"
+msgstr ""
+
+#: task_manager/views.py:15
+msgid "Success login"
+msgstr "Вы залогинены"
+
+#: task_manager/views.py:19
+msgid "Success logout"
+msgstr "Вы разлогинены"
 
 #: tasks/models.py:17
 msgid "Description"
