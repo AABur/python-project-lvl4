@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'users',
     'statuses',
+    'labels',
     'tasks',
 ]
 

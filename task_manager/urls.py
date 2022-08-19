@@ -56,6 +56,10 @@ urlpatterns += [
 ]
 
 urlpatterns += [
+    path('labels/', include('labels.urls'))
+]
+
+urlpatterns += [
     path('tasks/', TasksListView.as_view(), name='tasks'),
     path('tasks/create/', TaskCreateView.as_view(), name='task-create'),
     path(

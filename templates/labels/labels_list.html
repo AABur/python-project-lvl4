@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% load django_tables2 %}
+
+{% block content %}
+    <div class="container">
+        <h1>{% trans 'Labels' %}</h1>
+	    <a href="{% url 'labels:label-create' %}">{% translate 'Create label' %}</a>
+        {% render_table table %}
+    </div>
+{% endblock %}

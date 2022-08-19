@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div class="container">
+  <h1>{% trans 'Create label' %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% bootstrap_button _('Create') button_type='submit' button_class='btn-primary' %}
+  </form>
+</div>
+{% endblock %}
