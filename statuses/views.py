@@ -22,7 +22,7 @@ class StatusCreateView(SuccessMessageMixin, CreateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/create.html'
-    success_url = reverse_lazy('statuses')
+    success_url = reverse_lazy('statuses:statuses')
     success_message = _('Status successfully created')
 
 
@@ -30,7 +30,7 @@ class StatusChangeView(SuccessMessageMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/change.html'
-    success_url = reverse_lazy('statuses')
+    success_url = reverse_lazy('statuses:statuses')
     success_message = _('Status successfully changed')
 
 
@@ -41,9 +41,8 @@ class StatusDeleteView(SuccessMessageMixin, DeleteView):
     success_message = _('Status successfully deleted')
 
     def delete(self, request, *args, **kwargs):
-        self.get_object()
         try:
-            super(StatusDeleteView, self).delete(self.request, *args, **kwargs)
+            self.get_object().delete()
         except ProtectedError:
             messages.error(
                 self.request,
