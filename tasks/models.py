@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from labels.models import Label
 from statuses.models import Status
 from users.models import TMUser
 
@@ -38,5 +39,23 @@ class Task(models.Model):
         verbose_name=_('Creation date'),
     )
 
+    labels = models.ManyToManyField(
+        Label,
+        through='LabelsToTask',
+        through_fields=('task', 'label'),
+        verbose_name=_('Labels')
+    )
+
     def __str__(self) -> str:
         return self.name
+
+
+class LabelsToTask(models.Model):
+    task = models.ForeignKey(
+        Task,
+        on_delete=models.CASCADE
+    )
+    label = models.ForeignKey(
+        Label,
+        on_delete=models.PROTECT
+    )
