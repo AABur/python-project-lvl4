@@ -4,24 +4,20 @@
 {% load django_tables2 %}
 
 {% block content %}
+
 <div class="container">
     <h1>{% trans 'Tasks' %}</h1>
+
     <a href="{% url 'task-create' %}">{% translate 'Create task' %}</a>
+
     {% if filter %}
     <form action="" method="get" class="form form-inline">
         {% bootstrap_form filter.form layout='inline' %}
         {% bootstrap_button 'filter' %}
     </form>
     {% endif %}
-    
-    <form method="get">
-        {{ filter.form.as_p }}
-        <input type="submit" />
-    </form>
-    {% for obj in filter.qs %}
-        {{ obj.name }} - ${{ obj.price }}<br />
-    {% endfor %}
 
     {% render_table table %}
 </div>
+
 {% endblock %}
