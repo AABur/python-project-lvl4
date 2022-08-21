@@ -2,7 +2,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
-from django_tables2 import SingleTableView
+from django_filters.views import FilterView
+from django_tables2.views import SingleTableMixin
 
 from task_manager.mixins import AuthorizationRequiredMixin
 from tasks.forms import TaskForm
@@ -12,11 +13,12 @@ from tasks.tables import TasksListTable
 
 class TasksListView(
     AuthorizationRequiredMixin,
-    SingleTableView,
+    SingleTableMixin, FilterView,
 ):
     model = Task
     table_class = TasksListTable
     template_name = 'tasks/tasks_list.html'
+    filterset_fields = ['status', 'executor', 'labels']
 
 
 class TaskCreateView(
