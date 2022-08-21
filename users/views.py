@@ -45,7 +45,7 @@ class UserDeleteView(
 
     url_user_not_authorized = 'users'
     message_user_not_authorized = _(
-        'You have no permissions to change another user.')
+        'You have no permissions to update another user.')
 
     def delete(self, request, *args, **kwargs):
         if Task.objects.filter(author=self.request.user.pk) or Task.objects.filter(executor=self.request.user.pk):
