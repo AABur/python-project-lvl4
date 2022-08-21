@@ -3,9 +3,10 @@ import django_tables2 as tables
 from tasks.models import Task
 
 TEMPLATE = '''
-    <a href="{% url 'task-update' record.pk %}">Edit</a>
+    {% load i18n %}
+    <a href="{% url 'task-update' record.pk %}">{% trans 'Update' %}</a>
     <br>
-    <a href="{% url 'task-delete' record.pk %}">Delete</a>
+    <a href="{% url 'task-delete' record.pk %}">{% trans 'Delete' %}</a>
 '''
 
 
@@ -25,6 +26,5 @@ class TasksListTable(tables.Table):
         model = Task
         orderable = False
         template_name = "django_tables2/bootstrap4.html"
-        fields = ('id', 'name', 'status', 'author',
-                  'executor', 'create_date', 'links')
+        fields = ('id', 'name', 'status', 'author', 'executor', 'date_created')
         attrs = {'class': 'table table-striped'}
