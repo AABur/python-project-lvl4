@@ -3,9 +3,10 @@ import django_tables2 as tables
 from labels.models import Label
 
 TEMPLATE = '''
-    <a href="{% url 'labels:label-update' record.pk %}">Change</a>
+    {% load i18n %}
+    <a href="{% url 'labels:label-update' record.pk %}">{% trans 'Update' %}</a>
     <br>
-    <a href="{% url 'labels:label-delete' record.pk %}">Delete</a>
+    <a href="{% url 'labels:label-delete' record.pk %}">{% trans 'Delete' %}</a>
 '''
 
 
@@ -22,7 +23,4 @@ class LabelsListTable(tables.Table):
         orderable = False
         template_name = "django_tables2/bootstrap4.html"
         fields = ('id', "name", 'date_created')
-        attrs = {
-            'class': 'table table-striped',
-            'id': 'userTable'
-        }
+        attrs = {'class': 'table table-striped'}

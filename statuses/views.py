@@ -34,16 +34,16 @@ class StatusCreateView(
     success_message = _('Status successfully created')
 
 
-class StatusChangeView(
+class StatusUpdateView(
     AuthorizationRequiredMixin,
     SuccessMessageMixin,
     UpdateView,
 ):
     model = Status
     form_class = StatusForm
-    template_name = 'statuses/change.html'
+    template_name = 'statuses/update.html'
     success_url = reverse_lazy('statuses:statuses')
-    success_message = _('Status successfully changed')
+    success_message = _('Status successfully updated')
 
 
 class StatusDeleteView(

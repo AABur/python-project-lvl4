@@ -9,7 +9,7 @@ urlpatterns = [
     path('create/', views.LabelCreateView.as_view(), name='label-create'),
     path(
         '<int:pk>/update/',
-        views.LabelChangeView.as_view(),
+        views.LabelUpdateView.as_view(),
         name='label-update',
     ),
     path(

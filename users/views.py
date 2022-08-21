@@ -71,11 +71,11 @@ class UserUpdateView(
     model = TMUser
     form_class = TMUserCreationForm
     success_url = reverse_lazy('users')
-    success_message = _('User successfully modified')
+    success_message = _('User successfully updated')
 
     url_user_not_authorized = 'users'
     message_user_not_authorized = _(
-        'You have no permissions to change another user.')
+        'You have no permissions to update another user.')
 
     def check_authorisation(self):
         return self.get_object() == self.request.user

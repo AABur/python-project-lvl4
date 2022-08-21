@@ -4,9 +4,10 @@ from django.utils.translation import gettext_lazy as _
 from users.models import TMUser
 
 TEMPLATE = '''
-    <a href="{% url 'user-update' record.pk %}">Edit</a>
+    {% load i18n %}
+    <a href="{% url 'user-update' record.pk %}">{% trans 'Update' %}</a>
     <br>
-    <a href="{% url 'user-delete' record.pk %}">Delete</a>
+    <a href="{% url 'user-delete' record.pk %}">{% trans 'Delete' %}</a>
 '''
 
 
@@ -33,7 +34,4 @@ class UsersListTable(tables.Table):
         orderable = False
         template_name = "django_tables2/bootstrap4.html"
         fields = ('id', "username", 'full_name', 'date_created')
-        attrs = {
-            'class': 'table table-striped',
-            'id': 'userTable'
-        }
+        attrs = {'class': 'table table-striped'}

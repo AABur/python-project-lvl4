@@ -6,11 +6,11 @@
 {% block content %}
 
     <div class="container">
-        <h1>{% trans 'Change status' %}</h1>
+        <h1>{% trans 'Update status' %}</h1>
         <form action="" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            {% buttons submit='Change' %}{% endbuttons %}
+            {% buttons submit='Update' %}{% endbuttons %}
         </form>
     </div>
 

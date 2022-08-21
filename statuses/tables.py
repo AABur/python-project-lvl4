@@ -3,9 +3,10 @@ import django_tables2 as tables
 from statuses.models import Status
 
 TEMPLATE = '''
-    <a href="{% url 'statuses:status-update' record.pk %}">Change</a>
+    {% load i18n %}
+    <a href="{% url 'statuses:status-update' record.pk %}">{% trans 'Update' %}</a>
     <br>
-    <a href="{% url 'statuses:status-delete' record.pk %}">Delete</a>
+    <a href="{% url 'statuses:status-delete' record.pk %}">{% trans 'Delete' %}</a>
 '''
 
 
@@ -22,7 +23,4 @@ class StatusesListTable(tables.Table):
         orderable = False
         template_name = "django_tables2/bootstrap4.html"
         fields = ('id', "name", 'date_created')
-        attrs = {
-            'class': 'table table-striped',
-            'id': 'userTable'
-        }
+        attrs = {'class': 'table table-striped'}

@@ -20,7 +20,7 @@ from django.urls.conf import include
 from django.views.generic.base import TemplateView
 
 from tasks.views import (
-    TaskChangeView,
+    TaskUpdateView,
     TaskCreateView,
     TaskDeleteView,
     TasksListView,
@@ -64,7 +64,7 @@ urlpatterns += [
     path('tasks/create/', TaskCreateView.as_view(), name='task-create'),
     path(
         'tasks/<int:pk>/update/',
-        TaskChangeView.as_view(),
+        TaskUpdateView.as_view(),
         name='task-update',
     ),
     path(

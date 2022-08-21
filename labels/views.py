@@ -34,16 +34,16 @@ class LabelCreateView(
     success_message = _('Label successfully created')
 
 
-class LabelChangeView(
+class LabelUpdateView(
     AuthorizationRequiredMixin,
     SuccessMessageMixin,
     UpdateView,
 ):
     model = Label
     form_class = LabelForm
-    template_name = 'labels/change.html'
+    template_name = 'labels/update.html'
     success_url = reverse_lazy('labels:labels')
-    success_message = _('Label successfully changed')
+    success_message = _('Label successfully updated')
 
 
 class LabelDeleteView(

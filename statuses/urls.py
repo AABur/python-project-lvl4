@@ -9,7 +9,7 @@ urlpatterns = [
     path('create/', views.StatusCreateView.as_view(), name='status-create'),
     path(
         '<int:pk>/update/',
-        views.StatusChangeView.as_view(),
+        views.StatusUpdateView.as_view(),
         name='status-update',
     ),
     path(
