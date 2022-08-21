@@ -7,6 +7,15 @@ from django.utils.translation import gettext as _
 class AuthorizationRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     login_url = 'login'
 
+    def get_test_func(self):
+        try:
+            return self.check_authorisation
+        except Exception:
+            return self.test_func
+
+    def test_func(self):
+        return True
+
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
             messages.error(self.request, self.message_user_not_authorized)

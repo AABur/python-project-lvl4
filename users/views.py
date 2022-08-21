@@ -14,14 +14,19 @@ from users.models import TMUser
 from users.tables import UsersListTable
 
 
-class SignUpView(SuccessMessageMixin, CreateView):
+class SignUpView(
+    SuccessMessageMixin,
+    CreateView,
+):
     form_class = TMUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'users/signup.html'
     success_message = _('User successfully registered')
 
 
-class UsersListView(SingleTableView):
+class UsersListView(
+    SingleTableView,
+):
     template_name = 'users/users_list.html'
     model = TMUser
     table_class = UsersListTable
@@ -30,7 +35,7 @@ class UsersListView(SingleTableView):
 class UserDeleteView(
     AuthorizationRequiredMixin,
     SuccessMessageMixin,
-    DeleteView
+    DeleteView,
 ):
 
     template_name = 'users/user_delete.html'
@@ -52,15 +57,14 @@ class UserDeleteView(
         messages.success(self.request, self.success_message)
         return super().delete(request, *args, **kwargs)
 
-    def test_func(self):
-        obj = self.get_object()
-        return obj.pk == self.request.user.pk
+    def check_authorisation(self):
+        return self.get_object() == self.request.user
 
 
 class UserUpdateView(
     AuthorizationRequiredMixin,
     SuccessMessageMixin,
-    UpdateView
+    UpdateView,
 ):
 
     template_name = 'users/user_update.html'
@@ -73,6 +77,5 @@ class UserUpdateView(
     message_user_not_authorized = _(
         'You have no permissions to change another user.')
 
-    def test_func(self):
-        obj = self.get_object()
-        return obj.pk == self.request.user.pk
+    def check_authorisation(self):
+        return self.get_object() == self.request.user

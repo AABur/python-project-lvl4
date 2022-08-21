@@ -10,15 +10,23 @@ from django_tables2 import SingleTableView
 from statuses.forms import StatusForm
 from statuses.models import Status
 from statuses.tables import StatusesListTable
+from task_manager.mixins import AuthorizationRequiredMixin
 
 
-class StatusesListView(SingleTableView):
+class StatusesListView(
+    AuthorizationRequiredMixin,
+    SingleTableView,
+):
     model = Status
     table_class = StatusesListTable
     template_name = 'statuses/statuses_list.html'
 
 
-class StatusCreateView(SuccessMessageMixin, CreateView):
+class StatusCreateView(
+    AuthorizationRequiredMixin,
+    SuccessMessageMixin,
+    CreateView,
+):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/create.html'
@@ -26,7 +34,11 @@ class StatusCreateView(SuccessMessageMixin, CreateView):
     success_message = _('Status successfully created')
 
 
-class StatusChangeView(SuccessMessageMixin, UpdateView):
+class StatusChangeView(
+    AuthorizationRequiredMixin,
+    SuccessMessageMixin,
+    UpdateView,
+):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/change.html'
@@ -34,7 +46,11 @@ class StatusChangeView(SuccessMessageMixin, UpdateView):
     success_message = _('Status successfully changed')
 
 
-class StatusDeleteView(SuccessMessageMixin, DeleteView):
+class StatusDeleteView(
+    AuthorizationRequiredMixin,
+    SuccessMessageMixin,
+    DeleteView,
+):
     model = Status
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses:statuses')

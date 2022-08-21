@@ -10,15 +10,23 @@ from django_tables2 import SingleTableView
 from labels.forms import LabelForm
 from labels.models import Label
 from labels.tables import LabelsListTable
+from task_manager.mixins import AuthorizationRequiredMixin
 
 
-class LabelsListView(SingleTableView):
+class LabelsListView(
+    AuthorizationRequiredMixin,
+    SingleTableView
+):
     model = Label
     table_class = LabelsListTable
     template_name = 'labels/labels_list.html'
 
 
-class LabelCreateView(SuccessMessageMixin, CreateView):
+class LabelCreateView(
+    AuthorizationRequiredMixin,
+    SuccessMessageMixin,
+    CreateView,
+):
     model = Label
     form_class = LabelForm
     template_name = 'labels/create.html'
@@ -26,7 +34,11 @@ class LabelCreateView(SuccessMessageMixin, CreateView):
     success_message = _('Label successfully created')
 
 
-class LabelChangeView(SuccessMessageMixin, UpdateView):
+class LabelChangeView(
+    AuthorizationRequiredMixin,
+    SuccessMessageMixin,
+    UpdateView,
+):
     model = Label
     form_class = LabelForm
     template_name = 'labels/change.html'
@@ -34,7 +46,11 @@ class LabelChangeView(SuccessMessageMixin, UpdateView):
     success_message = _('Label successfully changed')
 
 
-class LabelDeleteView(SuccessMessageMixin, DeleteView):
+class LabelDeleteView(
+    AuthorizationRequiredMixin,
+    SuccessMessageMixin,
+    DeleteView,
+):
     model = Label
     template_name = 'labels/delete.html'
     success_url = reverse_lazy('labels:labels')
