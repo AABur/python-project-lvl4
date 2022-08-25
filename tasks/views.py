@@ -6,9 +6,11 @@ from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
 
 from task_manager.mixins import AuthorizationRequiredMixin
-from tasks.forms import TaskForm
-from tasks.models import Task
-from tasks.tables import TasksListTable
+
+from .filters import TaskFilter
+from .forms import TaskForm
+from .models import Task
+from .tables import TasksListTable
 
 
 class TasksListView(
@@ -18,7 +20,7 @@ class TasksListView(
     model = Task
     table_class = TasksListTable
     template_name = 'tasks/tasks_list.html'
-    filterset_fields = ['status', 'executor', 'labels']
+    filterset_class = TaskFilter
 
 
 class TaskCreateView(
