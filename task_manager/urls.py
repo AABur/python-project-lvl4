@@ -40,15 +40,12 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('login/', UserLoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('', TemplateView.as_view(template_name='home.html'), name='labels'),
-    path('', TemplateView.as_view(template_name='home.html'), name='tasks'),
 ]
 
 urlpatterns += [
     path('users/', UsersListView.as_view(), name='users'),
     path('users/create/', SignUpView.as_view(), name='signup'),
     path('user/<int:pk>/update/', UserUpdateView.as_view(), name='user-update'),
-    path('user/<int:pk>/delete/', UserDeleteView.as_view(), name='user-delete'),
 ]
 
 urlpatterns += [
