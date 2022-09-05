@@ -40,9 +40,50 @@ def test_signup(client):
     assert user.check_password('topsecret123')
 
 
-def test_delete_user(user_self, user_other):
+def test_delete_user(client, user_self, user_other):
     assert TMUser.objects.all().count() == 2
+    response = client.post(reverse('user-delete', kwargs={'pk': user_other.pk}))
+    assert response.url == reverse('login')
+
+    client.login(username=user_other.username, password=user_other.password)
+    response = client.post(reverse('user-delete', kwargs={'pk': user_other.pk}))
+    assert response.url == reverse('login')
+    assert TMUser.objects.get(user_self.id) == 1
+
+    client.login(username=user_other.username, password=user_other.password)
+    response = client.post(reverse('user-delete', kwargs={'pk': user_other.pk}))
+    assert response.url == reverse('login')
 
 
-def test_update_user():
-    pass
+def test_delete_not_logged(client, user_self):
+    assert TMUser.objects.all().count() == 1
+    response = client.post(reverse('user-delete', kwargs={'pk': user_self.pk}))
+    assert response.url == reverse('login')
+    assert TMUser.objects.all().count() == 1
+    user = TMUser.objects.get(username=user_self.username)
+    assert user.full_name() == user_self.full_name()
+
+
+def test_delete_user_self(client, user_self):
+    assert TMUser.objects.all().count() == 1
+    client.login(username=user_self.username, password=user_self.password)
+
+    response = client.post(reverse('user-delete', kwargs={'pk': user_self.pk}))
+    assert response.url == reverse('login')
+    assert TMUser.objects.all().count() == 0
+
+
+def test_update_user_self(client, user_self):
+    assert TMUser.objects.all().count() == 1
+    client.login(username=user_self.username, password=user_self.password)
+    response = client.post(
+        reverse('user-update', kwargs={'pk': user_self.pk}),
+        data={
+            'last_name': 'UPDATED',
+            'password1': 'topsecret123',
+            'password2': 'topsecret123',
+        }
+    )
+    assert response.url == reverse('login')
+    user = TMUser.objects.get(username=user_self.username)
+    assert user.last_name == 'UPDATED'
