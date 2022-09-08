@@ -6,12 +6,14 @@ from django.urls import reverse
 from statuses.models import Status
 
 
-def test_create_status(client):
+def test_create_status(client, user_self):
+
+    client.force_login(user_self)
 
     assert Status.objects.all().count() == 0
 
     response = client.get(reverse('statuses:status-create'))
-    assert response.status_code == HTTPStatus.FOUND
+    assert response.status_code == HTTPStatus.OK
 
     with pytest.raises(Status.DoesNotExist):
         Status.objects.get(name='Status1')
