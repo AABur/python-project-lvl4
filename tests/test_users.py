@@ -1,12 +1,9 @@
 from http import HTTPStatus
-from urllib import response
 
 import pytest
 from django.urls import reverse
 
 from users.models import TMUser
-
-pytestmark = pytest.mark.django_db
 
 
 @pytest.mark.parametrize('url', ['/tasks/', '/labels/', '/statuses/'])
@@ -41,12 +38,14 @@ def test_signup(client):
     assert user.check_password('topsecret123')
 
 
-def test_delete_not_logged(client, user_self):
+def test_delete_not_logged_user(client, user_self):
     assert TMUser.objects.all().count() == 1
+
     response = client.post(reverse('user-delete', kwargs={'pk': user_self.pk}))
     assert response.url == reverse('login')
     assert TMUser.objects.all().count() == 1
     user = TMUser.objects.get(username=user_self.username)
+
     assert user.full_name() == user_self.full_name()
 
 
@@ -56,13 +55,29 @@ def test_delete_user_self(client, user_self):
 
     response = client.get(reverse('user-delete', kwargs={'pk': user_self.pk}))
     assert response.status_code == HTTPStatus.OK
+
     response = client.post(reverse('user-delete', kwargs={'pk': user_self.pk}))
     assert response.url == reverse('users')
     assert TMUser.objects.all().count() == 0
 
 
+def test_delete_user_other(client, user_self, user_other):
+    assert TMUser.objects.all().count() == 2
+    client.force_login(user_other)
+
+    response = client.get(reverse('user-delete', kwargs={'pk': user_self.pk}))
+    assert response.status_code == HTTPStatus.FOUND
+
+    response = client.post(reverse('user-delete', kwargs={'pk': user_self.pk}))
+    assert response.url == reverse('users')
+    assert TMUser.objects.all().count() == 2
+
+
 def test_update_user_self(client, user_self):
     client.force_login(user_self)
+
+    response = client.get(reverse('user-update', kwargs={'pk': user_self.pk}))
+    assert response.status_code == HTTPStatus.OK
 
     response = client.post(reverse('user-update', kwargs={'pk': user_self.pk}), data={
         'username': 'johndoe',
