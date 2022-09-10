@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 21:39+0200\n"
+"POT-Creation-Date: 2022-09-10 21:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: htmlcov/labels_tables_py.html:62 htmlcov/statuses_tables_py.html:62
+#: htmlcov/tasks_tables_py.html:62
+#: htmlcov/users_tables_py.html:63
+msgid "Update"
+msgstr "Изменить"
+
+#: htmlcov/labels_tables_py.html:64 htmlcov/statuses_tables_py.html:64
+#: htmlcov/tasks_tables_py.html:64 htmlcov/users_tables_py.html:65
+#: templates/tasks/view_task.html:49
+msgid "Delete"
+msgstr "Удалить"
 
 #: labels/models.py:9 statuses/models.py:9 tasks/models.py:13
 msgid "Name"
@@ -65,11 +77,11 @@ msgstr "Невозможно удалить статус, потому что о
 msgid "You are not logged in! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: task_manager/settings.py:133
+#: task_manager/settings.py:134
 msgid "English"
 msgstr ""
 
-#: task_manager/settings.py:134
+#: task_manager/settings.py:135
 msgid "Russian"
 msgstr "Русский"
 
@@ -84,6 +96,14 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:19
 msgid "Success logout"
 msgstr "Вы разлогинены"
+
+#: tasks/filters.py:11
+msgid "Label"
+msgstr "Метка"
+
+#: tasks/filters.py:16
+msgid "Only your tasks"
+msgstr "Только свои задачи"
 
 #: tasks/models.py:18
 msgid "Description"
@@ -106,15 +126,15 @@ msgstr "Статус"
 msgid "Labels"
 msgstr "Метки"
 
-#: tasks/views.py:31
+#: tasks/views.py:35
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:47
+#: tasks/views.py:51
 msgid "Task successfully updated"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:58
+#: tasks/views.py:62
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
@@ -131,7 +151,7 @@ msgstr "Пользователи"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: templates/base.html:18 templates/tasks/tasks_list.html:8
+#: templates/base.html:18 templates/tasks/tasks_list.html:9
 msgid "Tasks"
 msgstr "Задачи"
 
@@ -189,7 +209,7 @@ msgstr "Удаление статуса"
 msgid "Update status"
 msgstr "Изменить статус"
 
-#: templates/tasks/create.html:8 templates/tasks/tasks_list.html:9
+#: templates/tasks/create.html:8 templates/tasks/tasks_list.html:11
 msgid "Create task"
 msgstr "Создать задачу"
 
@@ -208,10 +228,6 @@ msgstr "Дата создания"
 #: templates/tasks/view_task.html:47
 msgid "Change"
 msgstr "Изменить"
-
-#: templates/tasks/view_task.html:49
-msgid "Delete"
-msgstr "Удалить"
 
 #: templates/users/signup.html:8 templates/users/signup.html:12
 msgid "Sign up"
@@ -237,6 +253,10 @@ msgstr "Пользователь успешно зарегистрирован"
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удалён"
 
+#: users/views.py:48 users/views.py:78
+msgid "You have no permissions to update another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
 #: users/views.py:54
 msgid "Unable to delete a user because they are in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
@@ -244,8 +264,3 @@ msgstr "Невозможно удалить пользователя, потом
 #: users/views.py:74
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменён"
-
-#: users/views.py:78
-#: users/views.py:48
-msgid "You have no permissions to update another user."
-msgstr "У вас нет прав для изменения другого пользователя."
