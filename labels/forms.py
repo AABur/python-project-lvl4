@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from labels.models import Label
+from .models import Label
 
 
 class LabelForm(ModelForm):

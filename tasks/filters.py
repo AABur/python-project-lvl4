@@ -3,7 +3,8 @@ from django.utils.translation import gettext as _
 from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
 
 from labels.models import Label
-from tasks.models import Task
+
+from .models import Task
 
 
 # MY

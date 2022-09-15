@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from statuses.models import Status
+from .models import Status
 
 
 class StatusForm(ModelForm):

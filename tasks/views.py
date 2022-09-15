@@ -7,10 +7,11 @@ from django_tables2 import SingleTableView
 
 from task_manager.mixins import AuthorizationRequiredMixin
 
-from tasks.filters import TaskFilter
-from tasks.forms import TaskForm
-from tasks.models import Task
-from tasks.tables import TasksListTable
+from .filters import TaskFilter
+from .forms import TaskForm
+from .models import Task
+from .tables import TasksListTable
+
 
 class TasksListView(
     AuthorizationRequiredMixin,

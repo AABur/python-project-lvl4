@@ -1,6 +1,6 @@
 import django_tables2 as tables
 
-from statuses.models import Status
+from .models import Status
 
 TEMPLATE = '''
     {% load i18n %}

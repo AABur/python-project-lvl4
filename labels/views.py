@@ -7,10 +7,11 @@ from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
-from labels.forms import LabelForm
-from labels.models import Label
-from labels.tables import LabelsListTable
 from task_manager.mixins import AuthorizationRequiredMixin
+
+from .forms import LabelForm
+from .models import Label
+from .tables import LabelsListTable
 
 
 class LabelsListView(

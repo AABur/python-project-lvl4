@@ -7,10 +7,11 @@ from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
-from statuses.forms import StatusForm
-from statuses.models import Status
-from statuses.tables import StatusesListTable
 from task_manager.mixins import AuthorizationRequiredMixin
+
+from .forms import StatusForm
+from .models import Status
+from .tables import StatusesListTable
 
 
 class StatusesListView(

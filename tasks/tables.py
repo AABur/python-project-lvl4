@@ -1,6 +1,6 @@
 import django_tables2 as tables
 
-from tasks.models import Task
+from .models import Task
 
 TEMPLATE = '''
     {% load i18n %}

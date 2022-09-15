@@ -1,6 +1,6 @@
 import django_tables2 as tables
 
-from labels.models import Label
+from .models import Label
 
 TEMPLATE = '''
     {% load i18n %}
