@@ -36,14 +36,15 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('users/', UsersListView.as_view(), name='users'),
-    path('users/create/', SignUpView.as_view(), name='signup'),
-    path('user/<int:pk>/update/', UserUpdateView.as_view(), name='user-update'),
-    path('user/<int:pk>/delete/', UserDeleteView.as_view(), name='user-delete'),
-]
-
-urlpatterns += [
     path('statuses/', include('statuses.urls')),
     path('labels/', include('labels.urls')),
     path('tasks/', include('tasks.urls')),
+    path('users/', include('users.urls')),
 ]
+
+# urlpatterns += [
+#     path('users/', UsersListView.as_view(), name='users'),
+#     path('users/create/', SignUpView.as_view(), name='signup'),
+#     path('user/<int:pk>/update/', UserUpdateView.as_view(), name='user-update'),
+#     path('user/<int:pk>/delete/', UserDeleteView.as_view(), name='user-delete'),
+# ]

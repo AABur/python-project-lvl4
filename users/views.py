@@ -13,6 +13,7 @@ from users.forms import TMUserCreationForm
 from users.models import TMUser
 from users.tables import UsersListTable
 
+
 class SignUpView(
     SuccessMessageMixin,
     CreateView,
@@ -39,10 +40,10 @@ class UserDeleteView(
 
     template_name = 'users/user_delete.html'
     model = TMUser
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('users:users')
     success_message = _('User successfully deleted')
 
-    url_user_not_authorized = 'users'
+    url_user_not_authorized = 'users:users'
     message_user_not_authorized = _(
         'You have no permissions to update another user.')
 
@@ -52,7 +53,7 @@ class UserDeleteView(
                 self.request,
                 _('Unable to delete a user because they are in use')
             )
-            return redirect(reverse_lazy('users'))
+            return redirect(reverse_lazy('users:users'))
         messages.success(self.request, self.success_message)
         return super().delete(request, *args, **kwargs)
 
@@ -69,7 +70,7 @@ class UserUpdateView(
     template_name = 'users/user_update.html'
     model = TMUser
     form_class = TMUserCreationForm
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('users:users')
     success_message = _('User successfully updated')
 
     url_user_not_authorized = 'users'
