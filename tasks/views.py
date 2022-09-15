@@ -3,19 +3,18 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
-from django_tables2.views import SingleTableMixin
+from django_tables2 import SingleTableView
 
 from task_manager.mixins import AuthorizationRequiredMixin
 
-from .filters import TaskFilter
-from .forms import TaskForm
-from .models import Task
-from .tables import TasksListTable
-
+from tasks.filters import TaskFilter
+from tasks.forms import TaskForm
+from tasks.models import Task
+from tasks.tables import TasksListTable
 
 class TasksListView(
     AuthorizationRequiredMixin,
-    SingleTableMixin, FilterView,
+    SingleTableView, FilterView,
 ):
     model = Task
     table_class = TasksListTable
@@ -31,7 +30,7 @@ class TaskCreateView(
     model = Task
     form_class = TaskForm
     template_name = 'tasks/create.html'
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('tasks:tasks')
     success_message = _('Task successfully created')
 
     def form_valid(self, form):
@@ -47,7 +46,7 @@ class TaskUpdateView(
     model = Task
     form_class = TaskForm
     template_name = 'tasks/update.html'
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('tasks:tasks')
     success_message = _('Task successfully updated')
 
 
@@ -58,7 +57,7 @@ class TaskDeleteView(
 ):
     model = Task
     template_name = 'tasks/delete.html'
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('tasks:tasks')
     success_message = _('Task successfully deleted')
 
 

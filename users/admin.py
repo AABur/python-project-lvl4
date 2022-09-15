@@ -4,7 +4,6 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import TMUserChangeForm, TMUserCreationForm
 from .models import TMUser
 
-
 class TMUserAdmin(UserAdmin):
     add_form = TMUserCreationForm
     form = TMUserChangeForm

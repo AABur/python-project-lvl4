@@ -8,7 +8,7 @@
 <div class="container">
     <h1>{% trans 'Tasks' %}</h1>
 
-    <a href="{% url 'task-create' %}">{% translate 'Create task' %}</a>
+    <a href="{% url 'tasks:task-create' %}">{% translate 'Create task' %}</a>
 
     {% if filter %}
     <form action="" method="get" class="form form-inline">

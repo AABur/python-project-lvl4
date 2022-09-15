@@ -1,7 +1,7 @@
 """Represents TMUser objects in the database."""
+
 from django.contrib.auth.models import AbstractUser
 from django.urls.base import reverse
-
 
 class TMUser(AbstractUser):
     """Represents TMUser objects in the database."""

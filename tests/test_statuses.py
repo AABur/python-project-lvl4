@@ -5,7 +5,6 @@ from django.urls import reverse
 
 from statuses.models import Status
 
-
 def test_create_status(client, user_self):
 
     client.force_login(user_self)

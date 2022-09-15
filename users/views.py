@@ -13,7 +13,6 @@ from users.forms import TMUserCreationForm
 from users.models import TMUser
 from users.tables import UsersListTable
 
-
 class SignUpView(
     SuccessMessageMixin,
     CreateView,

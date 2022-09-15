@@ -2,7 +2,6 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
 from .models import TMUser
 
-
 class TMUserCreationForm(UserCreationForm):
 
     class Meta:

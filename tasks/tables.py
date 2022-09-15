@@ -4,9 +4,9 @@ from tasks.models import Task
 
 TEMPLATE = '''
     {% load i18n %}
-    <a href="{% url 'task-update' record.pk %}">{% trans 'Update' %}</a>
+    <a href="{% url 'tasks:task-update' record.pk %}">{% trans 'Update' %}</a>
     <br>
-    <a href="{% url 'task-delete' record.pk %}">{% trans 'Delete' %}</a>
+    <a href="{% url 'tasks:task-delete' record.pk %}">{% trans 'Delete' %}</a>
 '''
 
 
@@ -19,7 +19,7 @@ class TasksListTable(tables.Table):
     )
 
     name = tables.TemplateColumn(
-        '<a href="{% url \'view_task\' record.pk %}">{{ record.name }}</a>'
+        '<a href="{% url \'tasks:view_task\' record.pk %}">{{ record.name }}</a>'
     )
 
     class Meta:
