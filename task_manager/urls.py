@@ -19,13 +19,6 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.urls.conf import include
 
-from users.views import (
-    SignUpView,
-    UserDeleteView,
-    UsersListView,
-    UserUpdateView,
-)
-
 from .views import HomeView, UserLoginView
 
 urlpatterns = [
@@ -33,9 +26,6 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('login/', UserLoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-]
-
-urlpatterns += [
     path('statuses/', include('statuses.urls')),
     path('labels/', include('labels.urls')),
     path('tasks/', include('tasks.urls')),
