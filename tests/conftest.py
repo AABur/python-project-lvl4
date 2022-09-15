@@ -1,9 +1,9 @@
 import pytest
 
-from users.models import TMUser
-from statuses.models import Status
 from labels.models import Label
+from statuses.models import Status
 from tasks.models import Task
+from users.models import TMUser
 
 
 @pytest.fixture(autouse=True)

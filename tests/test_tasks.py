@@ -1,6 +1,9 @@
-from django.urls import reverse
-from tasks.models import Task
 from http import HTTPStatus
+
+from django.urls import reverse
+
+from tasks.models import Task
+
 
 def test_create_task(client, user_author, user_executor, status_used, label_used):
     assert Task.objects.count() == 0

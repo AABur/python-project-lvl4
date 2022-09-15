@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from users.models import TMUser
 
+
 @pytest.mark.parametrize('url', ['/tasks/', '/labels/', '/statuses/'])
 def test_anon_user_is_redirect(client, url):
     response = client.get(url)
