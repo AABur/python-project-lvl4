@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django_tables2',
     'django_filters',
     'users',
-    'statuses',
+    'task_manager.statuses',
     'labels',
     'tasks',
 ]
