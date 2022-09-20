@@ -2,7 +2,7 @@ from django.forms.widgets import CheckboxInput
 from django.utils.translation import gettext as _
 from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
 
-from labels.models import Label
+from task_manager.labels.models import Label
 
 from .models import Task
 
