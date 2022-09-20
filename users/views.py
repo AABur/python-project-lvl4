@@ -8,7 +8,7 @@ from django.views.generic.edit import DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
 from task_manager.mixins import AuthorizationRequiredMixin
-from tasks.models import Task
+from task_manager.tasks.models import Task
 
 from .forms import TMUserCreationForm
 from .models import TMUser
