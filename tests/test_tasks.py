@@ -2,17 +2,17 @@ from http import HTTPStatus
 
 from django.urls import reverse
 
-from tasks.models import Task
+from task_manager.tasks.models import Task
 
 
 def test_create_task(client, user_author, user_executor, status_used, label_used):
     assert Task.objects.count() == 0
 
     client.force_login(user_author)
-    response = client.get(reverse('task-create'))
+    response = client.get(reverse('tasks:task-create'))
     assert response.status_code == HTTPStatus.OK
 
-    response = client.post(reverse('task-create'), data={
+    response = client.post(reverse('tasks:task-create'), data={
         'name': 'Task title',
         'description': 'Task description',
         'author': user_author.id,
@@ -22,7 +22,7 @@ def test_create_task(client, user_author, user_executor, status_used, label_used
     })
     assert Task.objects.count() == 1
     assert response.status_code == HTTPStatus.FOUND
-    assert response.url == reverse('tasks')
+    assert response.url == reverse('tasks:tasks')
 
     task = Task.objects.get(name='Task title')
     assert task.name == 'Task title'

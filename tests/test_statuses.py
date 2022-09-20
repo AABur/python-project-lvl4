@@ -3,7 +3,7 @@ from http import HTTPStatus
 import pytest
 from django.urls import reverse
 
-from statuses.models import Status
+from task_manager.statuses.models import Status
 
 
 def test_create_status(client, user_self):
