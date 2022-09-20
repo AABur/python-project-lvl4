@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
-from users.models import TMUser
+from task_manager.users.models import TMUser
 
 
 class Task(models.Model):
