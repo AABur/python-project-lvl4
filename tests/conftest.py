@@ -74,18 +74,19 @@ def user_executor():
 
 @pytest.fixture
 def task(user_author, user_executor, status_used, label_used):
-    return Task.objects.create(
-        title='Task title',
+    task = Task.objects.create(
+        name='Task title',
         description='Task description',
         author=user_author,
         executor=user_executor,
         status=status_used,
-        label=label_used,
     )
+    task.labels.add(label_used)
+    return task
 
 
 @pytest.fixture
-def logged_in_client(client, user):
+def logged_in_user(client, user_self):
     """Log in the client with the given user."""
-    client.force_login(user)
-    return client
+    client.force_login(user_self)
+    return user_self
