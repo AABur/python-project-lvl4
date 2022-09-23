@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
-from django_tables2 import SingleTableView
+from django_tables2 import SingleTableMixin
 
 from task_manager.mixins import AuthorizationRequiredMixin
 
@@ -15,7 +15,7 @@ from .tables import TasksListTable
 
 class TasksListView(
     AuthorizationRequiredMixin,
-    SingleTableView, FilterView,
+    SingleTableMixin, FilterView,
 ):
     model = Task
     table_class = TasksListTable
