@@ -74,7 +74,7 @@ class UserUpdateView(
     success_url = reverse_lazy('users:users')
     success_message = _('User successfully updated')
 
-    url_user_not_authorized = 'users'
+    url_user_not_authorized = 'users:users'
     message_user_not_authorized = _(
         'You have no permissions to update another user.')
 
