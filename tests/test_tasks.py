@@ -18,11 +18,13 @@ def test_create_task(client, user_author, user_executor, status_used, label_used
         'author': user_author.id,
         'executor': user_executor.id,
         'status': status_used.id,
-        'label': label_used.id,
+        # 'label': label_used.id,
     })
-    assert Task.objects.count() == 1
-    assert response.status_code == HTTPStatus.FOUND
+
+    assert response.status_code == HTTPStatus.OK
     assert response.url == reverse('tasks:tasks')
+
+    assert Task.objects.count() == 1
 
     task = Task.objects.get(name='Task title')
     assert task.name == 'Task title'
