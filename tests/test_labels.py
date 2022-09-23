@@ -26,8 +26,7 @@ def test_create_label(client):
     assert label.name == 'Label1'
 
 
-@pytest.mark.usefixtures("logged_in_user")
-@pytest.mark.usefixtures("task")
+@pytest.mark.usefixtures("logged_in_user", "task")
 def test_delete_label_assigned_to_task(client, label_used):
     assert Label.objects.all().count() == 1
 
@@ -40,8 +39,7 @@ def test_delete_label_assigned_to_task(client, label_used):
     assert Label.objects.all().count() == 1
 
 
-@pytest.mark.usefixtures("logged_in_user")
-@pytest.mark.usefixtures("task")
+@pytest.mark.usefixtures("logged_in_user", "task")
 def test_delete_label_unused(client, label_unused):
     label = Label.objects.get(name=label_unused.name)
     assert label.name == label_unused.name
