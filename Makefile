@@ -5,7 +5,7 @@ test: ## run tests
 	poetry run pytest --cov
 
 lint: ## run linter
-	poetry run flake8 .
+	poetry run flake8 task_manager/
 
 selfcheck: ## check pyproject.toml
 	poetry check
@@ -14,14 +14,6 @@ check: ## selfcheck + test + lint
 	@make selfcheck
 	@make test
 	@make lint
-
-build: ## check and build a package
-	@make check
-	@poetry build
-
-package-install: ## build and install
-	make build
-	pip install dist/*.whl
 
 run: ## run local server
 	poetry run python manage.py runserver 127.0.0.1:8081
@@ -32,14 +24,14 @@ open: ## open local server
 migrate: ## django migrate
 	poetry run python manage.py migrate
 
-setup: ## initial setup
-	install migrate createsuperuser
-
 migrations: ## django makemigrations
 	poetry run python manage.py makemigrations
 
 createsuperuser: ## createsuperuser
 	poetry run python manage.py createsuperuser
+
+setup: ## initial setup
+	install migrate createsuperuser
 
 clean: ## clean up python cache files
 	find . -type f -name *.pyc -delete
