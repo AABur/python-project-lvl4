@@ -6,7 +6,7 @@
 
 Hexlet tests and linter status [![Actions Status](https://github.com/AABur/python-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/AABur/python-project-lvl4/actions)
 
-**Task Manager** is a task management system similar to <http://www.redmine.org/>. It allows you to create tasks, assign executors, set task statuses and labels. Registration and Authentication are required to use the system.
+**Task Manager** is a task management system similar to <http://www.redmine.org/>. It allows you to create tasks, assign executors, set task statuses and labels.
 
 ## System features
 
@@ -65,3 +65,7 @@ make open
 ## Contributing
 
 This is a learning project and the contribution is not accepted.
+
+## License
+
+[MIT License](https://github.com/AABur/python-project-lvl4/LICENSE)
