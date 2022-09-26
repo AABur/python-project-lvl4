@@ -48,10 +48,14 @@ class UserDeleteView(
         'You have no permissions to update another user.')
 
     def delete(self, request, *args, **kwargs):
-        if Task.objects.filter(author=self.request.user.pk) or Task.objects.filter(executor=self.request.user.pk):
+        """If a user is the author or executor of any task, it cannot be deleted."""
+        if (
+            Task.objects.filter(author=self.request.user.pk) or
+            Task.objects.filter(executor=self.request.user.pk)
+        ).exists():
             messages.error(
                 self.request,
-                _('Unable to delete a user because they are in use')
+                _('Unable to delete a user because they are in use'),
             )
             return redirect(reverse_lazy('users:users'))
         messages.success(self.request, self.success_message)
