@@ -7,16 +7,15 @@ from django.utils.translation import gettext as _
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
+from task_manager.labels.forms import LabelForm
+from task_manager.labels.models import Label
+from task_manager.labels.tables import LabelsListTable
 from task_manager.mixins import AuthorizationRequiredMixin
-
-from .forms import LabelForm
-from .models import Label
-from .tables import LabelsListTable
 
 
 class LabelsListView(
     AuthorizationRequiredMixin,
-    SingleTableView
+    SingleTableView,
 ):
     model = Label
     table_class = LabelsListTable
@@ -58,12 +57,13 @@ class LabelDeleteView(
     success_message = _('Label successfully deleted')
 
     def delete(self, request, *args, **kwargs):
+        """Override delete method to handle ProtectedError."""
         try:
             self.get_object().delete()
         except ProtectedError:
             messages.error(
                 self.request,
-                _('It is not possible to delete the label because it is being used'),
+                _('It is not possible to delete the label because it is being used'),  # noqa: E501
             )
         else:
             messages.success(
