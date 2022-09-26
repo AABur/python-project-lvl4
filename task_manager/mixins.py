@@ -8,19 +8,23 @@ class AuthorizationRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     login_url = 'login'
 
     def get_test_func(self):
+        """Get test function for authorization."""
         try:
             return self.check_authorisation
         except Exception:
             return self.test_func
 
     def test_func(self):
+        """Check if user is authorized to access the page."""
         return True
 
     def handle_no_permission(self):
+        """Handle no permission."""
         if self.request.user.is_authenticated:
             messages.error(self.request, self.message_user_not_authorized)
             return redirect(self.url_user_not_authorized)
         else:
             messages.error(
-                self.request, _('You are not logged in! Please log in.'))
+                self.request, _('You are not logged in! Please log in.'),
+            )
             return redirect(self.login_url)
