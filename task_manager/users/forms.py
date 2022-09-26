@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
-from .models import TMUser
+from task_manager.users.models import TMUser
 
 
 class TMUserCreationForm(UserCreationForm):

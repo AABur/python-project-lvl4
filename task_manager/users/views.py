@@ -9,10 +9,9 @@ from django_tables2 import SingleTableView
 
 from task_manager.mixins import AuthorizationRequiredMixin
 from task_manager.tasks.models import Task
-
-from .forms import TMUserCreationForm
-from .models import TMUser
-from .tables import UsersListTable
+from task_manager.users.forms import TMUserCreationForm
+from task_manager.users.models import TMUser
+from task_manager.users.tables import UsersListTable
 
 
 class SignUpView(
