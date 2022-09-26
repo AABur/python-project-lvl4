@@ -8,10 +8,9 @@ from django.views.generic import CreateView, DeleteView, UpdateView
 from django_tables2 import SingleTableView
 
 from task_manager.mixins import AuthorizationRequiredMixin
-
-from .forms import StatusForm
-from .models import Status
-from .tables import StatusesListTable
+from task_manager.statuses.forms import StatusForm
+from task_manager.statuses.models import Status
+from task_manager.statuses.tables import StatusesListTable
 
 
 class StatusesListView(
@@ -58,12 +57,13 @@ class StatusDeleteView(
     success_message = _('Status successfully deleted')
 
     def delete(self, request, *args, **kwargs):
+        """Override delete method to handle ProtectedError exception."""
         try:
             self.get_object().delete()
         except ProtectedError:
             messages.error(
                 self.request,
-                _('It is not possible to delete the status because it is being used'),
+                _('It is not possible to delete the status because it is being used'),  # noqa: E501
             )
         else:
             messages.success(
