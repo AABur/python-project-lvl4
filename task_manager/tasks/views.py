@@ -6,16 +6,16 @@ from django_filters.views import FilterView
 from django_tables2 import SingleTableMixin
 
 from task_manager.mixins import AuthorizationRequiredMixin
-
-from .filters import TaskFilter
-from .forms import TaskForm
-from .models import Task
-from .tables import TasksListTable
+from task_manager.tasks.filters import TaskFilter
+from task_manager.tasks.forms import TaskForm
+from task_manager.tasks.models import Task
+from task_manager.tasks.tables import TasksListTable
 
 
 class TasksListView(
     AuthorizationRequiredMixin,
-    SingleTableMixin, FilterView,
+    SingleTableMixin,
+    FilterView,
 ):
     model = Task
     table_class = TasksListTable
@@ -35,6 +35,7 @@ class TaskCreateView(
     success_message = _('Task successfully created')
 
     def form_valid(self, form):
+        """Override form_valid method to set task author to current user."""
         form.instance.author = self.request.user
         return super().form_valid(form)
 

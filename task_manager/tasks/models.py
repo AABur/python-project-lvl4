@@ -5,16 +5,19 @@ from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from task_manager.users.models import TMUser
 
+LENGTH_NAME = 150
+LENGTH_DESCRIPTION = 400
+
 
 class Task(models.Model):
     name = models.CharField(
         unique=True,
-        max_length=150,
+        max_length=LENGTH_NAME,
         verbose_name=_('Name'),
     )
     description = models.TextField(
         blank=True,
-        max_length=400,
+        max_length=LENGTH_DESCRIPTION,
         verbose_name=_('Description'),
     )
     author = models.ForeignKey(
@@ -43,19 +46,20 @@ class Task(models.Model):
         Label,
         through='LabelsToTask',
         through_fields=('task', 'label'),
-        verbose_name=_('Labels')
+        verbose_name=_('Labels'),
     )
 
     def __str__(self) -> str:
+        """Return name of the task."""
         return self.name
 
 
-class LabelsToTask(models.Model):
+class LabelsToTask(models.Model):  # noqa: DJ08
     task = models.ForeignKey(
         Task,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     label = models.ForeignKey(
         Label,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
     )

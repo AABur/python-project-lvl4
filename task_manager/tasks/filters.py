@@ -3,8 +3,7 @@ from django.utils.translation import gettext as _
 from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
 
 from task_manager.labels.models import Label
-
-from .models import Task
+from task_manager.tasks.models import Task
 
 
 # MY
@@ -13,13 +12,14 @@ class TaskFilter(FilterSet):
 
     self_tasks = BooleanFilter(
         widget=CheckboxInput,
-        method="filter_self_tasks",
-        label=_('Only your tasks')
+        method='filter_self_tasks',
+        label=_('Only your tasks'),
     )
-
-    def filter_self_tasks(self, queryset, name, value):
-        return queryset.filter(author=self.request.user) if value else queryset
 
     class Meta:
         model = Task
-        fields = ["status", "executor", "labels"]
+        fields = ['status', 'executor', 'labels']
+
+    def filter_self_tasks(self, queryset, name, value):  # noqa: WPS110
+        """Filter tasks by current user."""
+        return queryset.filter(author=self.request.user) if value else queryset
