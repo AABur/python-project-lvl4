@@ -2,7 +2,10 @@ install: ## install dependencies
 	@poetry install
 
 test: ## run tests
-	poetry run pytest --cov
+	poetry run coverage run --source=task_manager -m pytest tests
+
+cc-coverage: ## Prepare coverage report for Codeclimate
+	poetry run coverage xml
 
 lint: ## run linter
 	poetry run flake8 task_manager/
