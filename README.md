@@ -68,4 +68,4 @@ This is a learning project and the contribution is not accepted.
 
 ## License
 
-[MIT License](https://github.com/AABur/python-project-lvl4/LICENSE)
+[MIT License](https://github.com/AABur/python-project-lvl4/blob/main/LICENSE)
