@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-import django_heroku
+import django_on_heroku
 import rollbar
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
@@ -170,5 +170,5 @@ ROLLBAR = {
 rollbar.init(**ROLLBAR)
 
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())  # noqa: WPS421
+# Configure Django App for Heroku.
+django_on_heroku.settings(locals())
