@@ -11,17 +11,31 @@ Hexlet tests and linter status [![Actions Status](https://github.com/AABur/pytho
 
 ## System features
 
-* Registration of users
-* Only the user himself can edit and update himself
-* Only the logged in users can add, edit and view tasks, statuses and labels.
-* A task consists of a name and a description. Each task can have a person to whom it is assigned.  Also each task has a mandatory fields - author (set automatically when creating the task) and status.
-* If a user is assigned to a task, it cannot be deleted.
-* Only the task author can delete tasks
-* If a status is associated with at least one task it cannot be deleted
-* Labels are a flexible alternative to categories. Allows grouping tags by different attributes, e.g. bugs, features etc.
-* If a label is associated with a task, it cannot be deleted.
-* A task filter allows to filter tasks by status, artist, label and display tasks authored by the current user.
-* [Rollbar](https://rollbar.com/) is used for error handling.
+### Users
+
+* Create, edit and delete users
+* Authentication of users
+* Only user can edit and update himself
+
+### Statuses
+* View, create, update, delete statuses only for logged in users
+* If a status is related to a task - you can't delete it
+
+### Tasks
+* View, create, update tasks only by logged-in users
+* Only the creator can delete tasks
+* Tasks can be filtered according to their status, artist or label; it is also possible to display the tasks created by the current user
+* If the user is associated with a task - it cannot be deleted
+
+### Tags
+
+* Only logged-in users can view, create, update and delete labels
+* If a label is associated with a task - it cannot be deleted
+
+### Used services
+
+* Application works equally well with SQLite and PostgreSQL
+* [Rollbar](https://rollbar.com/) is used for bugs handling.
 * Project designed for deployment on [Heroku](https://www.heroku.com)
 
 ## Illustration of a working project
