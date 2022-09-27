@@ -171,4 +171,4 @@ rollbar.init(**ROLLBAR)
 
 
 # Configure Django App for Heroku.
-django_on_heroku.settings(locals())
+django_on_heroku.settings(locals(), db_ssl_required=False)
