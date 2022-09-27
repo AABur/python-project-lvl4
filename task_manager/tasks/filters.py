@@ -8,8 +8,10 @@ from task_manager.tasks.models import Task
 
 # MY
 class TaskFilter(FilterSet):
-    label = ModelChoiceFilter(queryset=Label.objects.all(), label=_('Label'))
-
+    labels = ModelChoiceFilter(
+        queryset=Label.objects.all(),
+        label=_('Label'),
+    )
     self_tasks = BooleanFilter(
         widget=CheckboxInput,
         method='filter_self_tasks',
@@ -18,7 +20,7 @@ class TaskFilter(FilterSet):
 
     class Meta:
         model = Task
-        fields = ['status', 'executor', 'labels']
+        fields = ['status', 'executor']
 
     def filter_self_tasks(self, queryset, name, value):  # noqa: WPS110
         """Filter tasks by current user."""
