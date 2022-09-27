@@ -1,5 +1,6 @@
 # Task Manager
 
+[![build](https://github.com/AABur/python-project-lvl4/workflows/Python_CI/badge.svg)](https://github.com/AABur/python-project-lvl4/actions/workflows/python-ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a835accb4f3ea3647a3/maintainability)](https://codeclimate.com/github/AABur/python-project-lvl4/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4a835accb4f3ea3647a3/test_coverage)](https://codeclimate.com/github/AABur/python-project-lvl4/test_coverage)
 [![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
