@@ -19,10 +19,10 @@ check: ## selfcheck + test + lint
 	@make lint
 
 run: ## run local server
-	poetry run python manage.py runserver 127.0.0.1:8081
+	poetry run python manage.py runserver
 
 open: ## open local server
-	open http://127.0.0.1:8081/
+	open http://127.0.0.1:8000/
 
 migrate: ## django migrate
 	poetry run python manage.py migrate
