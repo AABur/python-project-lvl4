@@ -52,7 +52,7 @@ class LabelDeleteView(
     DeleteView,
 ):
     model = Label
-    template_name = 'labels/delete.html'
+    template_name = 'delete.html'
     success_url = reverse_lazy('labels:labels')
     success_message = _('Label successfully deleted')
 
@@ -71,3 +71,8 @@ class LabelDeleteView(
                 self.success_message,
             )
         return redirect(self.success_url)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Delete label')
+        return context

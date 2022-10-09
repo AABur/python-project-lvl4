@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+<p>{% trans 'Are you sure you want to delete ' %}
+  {% if object.name %}
+    '{{ object.name }}'
+  {% else %}
+    {{ object.first_name }} {{ object.last_name }}
+  {% endif %} ?
+</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {% bootstrap_button _('Yes, delete.') button_type='submit' button_class='btn-primary' %}
+</form>
+
+{% endblock %}

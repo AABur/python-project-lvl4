@@ -38,7 +38,7 @@ class UserDeleteView(
     DeleteView,
 ):
 
-    template_name = 'users/user_delete.html'
+    template_name = 'delete.html'
     model = TMUser
     success_url = reverse_lazy('users:users')
     success_message = _('User successfully deleted')
@@ -63,6 +63,11 @@ class UserDeleteView(
 
     def check_authorisation(self):
         return self.get_object() == self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Delete user')
+        return context
 
 
 class UserUpdateView(

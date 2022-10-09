@@ -58,9 +58,14 @@ class TaskDeleteView(
     DeleteView,
 ):
     model = Task
-    template_name = 'tasks/delete.html'
+    template_name = 'delete.html'
     success_url = reverse_lazy('tasks:tasks')
     success_message = _('Task successfully deleted')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Delete task')
+        return context
 
 
 class TaskView(
