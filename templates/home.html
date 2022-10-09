@@ -2,11 +2,10 @@
 {% load i18n %}
 {% load bootstrap4 %}
 
-
 {% block content %}
 <div class="container">
     <h1>{% trans 'Hello from Hexlet!' %}</h1>
     <p>{% trans 'Practical programming courses' %}</p>
-    {% bootstrap_button "Узнать болльше" button_type="link" href="https://ru.hexlet.io/" %}
+    {% bootstrap_button _("Read more") button_type="link" href="https://ru.hexlet.io/" %}
 </div>
 {% endblock content %}
