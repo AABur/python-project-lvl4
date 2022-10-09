@@ -29,9 +29,15 @@ class StatusCreateView(
 ):
     model = Status
     form_class = StatusForm
-    template_name = 'statuses/create.html'
+    template_name = 'common_form.html'
     success_url = reverse_lazy('statuses:statuses')
     success_message = _('Status successfully created')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Create status')
+        context['form_button'] = _('Create')
+        return context
 
 
 class StatusUpdateView(
@@ -41,9 +47,15 @@ class StatusUpdateView(
 ):
     model = Status
     form_class = StatusForm
-    template_name = 'statuses/update.html'
+    template_name = 'common_form.html'
     success_url = reverse_lazy('statuses:statuses')
     success_message = _('Status successfully updated')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Change status')
+        context['form_button'] = _('Change')
+        return context
 
 
 class StatusDeleteView(

@@ -20,8 +20,14 @@ class SignUpView(
 ):
     form_class = TMUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'users/signup.html'
+    template_name = 'common_form.html'
     success_message = _('User successfully registered')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Register user')
+        context['form_button'] = _('Register')
+        return context
 
 
 class UsersListView(
@@ -76,7 +82,7 @@ class UserUpdateView(
     UpdateView,
 ):
 
-    template_name = 'users/user_update.html'
+    template_name = 'common_form.html'
     model = TMUser
     form_class = TMUserCreationForm
     success_url = reverse_lazy('users:users')
@@ -88,3 +94,9 @@ class UserUpdateView(
 
     def check_authorisation(self):
         return self.get_object() == self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Change user')
+        context['form_button'] = _('Change')
+        return context

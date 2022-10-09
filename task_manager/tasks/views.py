@@ -30,7 +30,7 @@ class TaskCreateView(
 ):
     model = Task
     form_class = TaskForm
-    template_name = 'tasks/create.html'
+    template_name = 'common_form.html'
     success_url = reverse_lazy('tasks:tasks')
     success_message = _('Task successfully created')
 
@@ -38,6 +38,12 @@ class TaskCreateView(
         """Override form_valid method to set task author to current user."""
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Create task')
+        context['form_button'] = _('Create')
+        return context
 
 
 class TaskUpdateView(
@@ -47,9 +53,15 @@ class TaskUpdateView(
 ):
     model = Task
     form_class = TaskForm
-    template_name = 'tasks/update.html'
+    template_name = 'common_form.html'
     success_url = reverse_lazy('tasks:tasks')
     success_message = _('Task successfully updated')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Change task')
+        context['form_button'] = _('Change')
+        return context
 
 
 class TaskDeleteView(

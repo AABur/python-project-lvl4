@@ -10,8 +10,14 @@ class HomeView(TemplateView):
 
 
 class UserLoginView(SuccessMessageMixin, LoginView):
-    template_name = 'login.html'
+    template_name = 'common_form.html'
     success_message = _('Success login')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = _('Login')
+        context['form_button'] = _('Logon')
+        return context
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):
