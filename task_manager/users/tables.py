@@ -5,7 +5,7 @@ from task_manager.users.models import TMUser
 
 TEMPLATE = """
 {% load i18n %}
-<a href="{% url 'users:user-update' record.pk %}">{% trans 'Update' %}</a>
+<a href="{% url 'users:user-update' record.pk %}">{% trans 'Change' %}</a>
 <br>
 <a href="{% url 'users:user-delete' record.pk %}">{% trans 'Delete' %}</a>
 """
