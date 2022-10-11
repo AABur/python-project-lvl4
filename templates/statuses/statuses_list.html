@@ -6,7 +6,7 @@
 {% block content %}
     <div class="container">
         <h1>{% trans 'Statuses' %}</h1>
-	    <a href="{% url 'statuses:status-create' %}">{% translate 'Create status' %}</a>
+	    <a href="{% url 'statuses:create' %}">{% translate 'Create status' %}</a>
         {% render_table table %}
     </div>
 {% endblock %}

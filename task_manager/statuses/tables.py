@@ -4,9 +4,9 @@ from task_manager.statuses.models import Status
 
 TEMPLATE = """
 {% load i18n %}
-<a href="{% url 'statuses:status-update' record.pk %}">{% trans 'Change' %}</a>
+<a href="{% url 'statuses:update' record.pk %}">{% trans 'Change' %}</a>
 <br>
-<a href="{% url 'statuses:status-delete' record.pk %}">{% trans 'Delete' %}</a>
+<a href="{% url 'statuses:delete' record.pk %}">{% trans 'Delete' %}</a>
 """
 
 
