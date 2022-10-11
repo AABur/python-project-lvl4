@@ -4,9 +4,9 @@ from task_manager.tasks.models import Task
 
 TEMPLATE = """
 {% load i18n %}
-<a href="{% url 'tasks:task-update' record.pk %}">{% trans 'Change' %}</a>
+<a href="{% url 'tasks:update' record.pk %}">{% trans 'Change' %}</a>
 <br>
-<a href="{% url 'tasks:task-delete' record.pk %}">{% trans 'Delete' %}</a>
+<a href="{% url 'tasks:delete' record.pk %}">{% trans 'Delete' %}</a>
 """
 
 

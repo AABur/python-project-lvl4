@@ -31,7 +31,7 @@ class TaskCreateView(
     model = Task
     form_class = TaskForm
     template_name = 'common_form.html'
-    success_url = reverse_lazy('tasks:tasks')
+    success_url = reverse_lazy('tasks:list')
     success_message = _('Task successfully created')
 
     def form_valid(self, form):
@@ -54,7 +54,7 @@ class TaskUpdateView(
     model = Task
     form_class = TaskForm
     template_name = 'common_form.html'
-    success_url = reverse_lazy('tasks:tasks')
+    success_url = reverse_lazy('tasks:list')
     success_message = _('Task successfully updated')
 
     def get_context_data(self, **kwargs):
@@ -71,7 +71,7 @@ class TaskDeleteView(
 ):
     model = Task
     template_name = 'delete.html'
-    success_url = reverse_lazy('tasks:tasks')
+    success_url = reverse_lazy('tasks:list')
     success_message = _('Task successfully deleted')
 
     def get_context_data(self, **kwargs):
