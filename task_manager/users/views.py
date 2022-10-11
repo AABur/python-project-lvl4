@@ -46,10 +46,10 @@ class UserDeleteView(
 
     template_name = 'delete.html'
     model = TMUser
-    success_url = reverse_lazy('users:users')
+    success_url = reverse_lazy('users:list')
     success_message = _('User successfully deleted')
 
-    url_user_not_authorized = 'users:users'
+    url_user_not_authorized = 'users:list'
     message_user_not_authorized = _(
         'You have no permissions to update another user.')
 
@@ -63,7 +63,7 @@ class UserDeleteView(
                 self.request,
                 _('Unable to delete a user because they are in use'),
             )
-            return redirect(reverse_lazy('users:users'))
+            return redirect(reverse_lazy('users:list'))
         messages.success(self.request, self.success_message)
         return super().delete(request, *args, **kwargs)
 
@@ -85,10 +85,10 @@ class UserUpdateView(
     template_name = 'common_form.html'
     model = TMUser
     form_class = TMUserCreationForm
-    success_url = reverse_lazy('users:users')
+    success_url = reverse_lazy('users:list')
     success_message = _('User successfully updated')
 
-    url_user_not_authorized = 'users:users'
+    url_user_not_authorized = 'users:list'
     message_user_not_authorized = _(
         'You have no permissions to update another user.')
 

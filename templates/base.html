@@ -19,14 +19,14 @@
       <header>
       {% if user.is_authenticated %}
         <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> 
-        <a href="{% url 'users:users' %}">{% trans 'Users' %}</a> 
+        <a href="{% url 'users:list' %}">{% trans 'Users' %}</a> 
         <a href="{% url 'statuses:list' %}" >{% trans 'Statuses' %}</a> 
         <a href="{% url 'labels:list' %}" >{% trans 'Labels' %}</a> 
         <a href="{% url 'tasks:list' %}">{% trans 'Tasks' %}</a>
         <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
       {% else %}
         <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> 
-        <a href="{% url 'users:users' %}">{% trans 'Users' %}</a> 
+        <a href="{% url 'users:list' %}">{% trans 'Users' %}</a> 
         <a href="{% url 'login' %}" >{% trans 'Login' %}</a> 
         <a href="{% url 'users:signup' %}">{% trans 'Registration' %}</a>
       {% endif %}
