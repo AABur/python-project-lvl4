@@ -4,9 +4,9 @@ from task_manager.labels.models import Label
 
 TEMPLATE = """
 {% load i18n %}
-<a href="{% url 'labels:label-update' record.pk %}">{% trans 'Change' %}</a>
+<a href="{% url 'labels:update' record.pk %}">{% trans 'Change' %}</a>
 <br>
-<a href="{% url 'labels:label-delete' record.pk %}">{% trans 'Delete' %}</a>
+<a href="{% url 'labels:delete' record.pk %}">{% trans 'Delete' %}</a>
 """
 
 

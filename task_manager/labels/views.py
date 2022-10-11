@@ -30,7 +30,7 @@ class LabelCreateView(
     model = Label
     form_class = LabelForm
     template_name = 'common_form.html'
-    success_url = reverse_lazy('labels:labels')
+    success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully created')
 
     def get_context_data(self, **kwargs):
@@ -48,7 +48,7 @@ class LabelUpdateView(
     model = Label
     form_class = LabelForm
     template_name = 'common_form.html'
-    success_url = reverse_lazy('labels:labels')
+    success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully updated')
 
     def get_context_data(self, **kwargs):
@@ -65,7 +65,7 @@ class LabelDeleteView(
 ):
     model = Label
     template_name = 'delete.html'
-    success_url = reverse_lazy('labels:labels')
+    success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully deleted')
 
     def delete(self, request, *args, **kwargs):

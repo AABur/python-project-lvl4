@@ -21,7 +21,7 @@
         <a href="{% url 'home' %}">{% trans 'Task manager' %}</a> 
         <a href="{% url 'users:users' %}">{% trans 'Users' %}</a> 
         <a href="{% url 'statuses:statuses' %}" >{% trans 'Statuses' %}</a> 
-        <a href="{% url 'labels:labels' %}" >{% trans 'Labels' %}</a> 
+        <a href="{% url 'labels:list' %}" >{% trans 'Labels' %}</a> 
         <a href="{% url 'tasks:tasks' %}">{% trans 'Tasks' %}</a>
         <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
       {% else %}
