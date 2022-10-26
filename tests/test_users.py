@@ -43,7 +43,7 @@ def test_delete_not_logged_user(client, user_self):
     """Test that not logged user can't delete user."""
     response = client.post(
         reverse(
-            'users:user-delete',
+            'users:delete',
             kwargs={'pk': user_self.pk},
         ),
     )
@@ -60,7 +60,7 @@ def test_delete_user_self(client, user_self):
 
     response = client.get(
         reverse(
-            'users:user-delete',
+            'users:delete',
             kwargs={'pk': user_self.pk},
         ),
     )
@@ -68,11 +68,11 @@ def test_delete_user_self(client, user_self):
 
     response = client.post(
         reverse(
-            'users:user-delete',
+            'users:delete',
             kwargs={'pk': user_self.pk},
         ),
     )
-    assert response.url == reverse('users:users')
+    assert response.url == reverse('users:list')
     assert TMUser.objects.all().count() == 0
 
 
@@ -82,7 +82,7 @@ def test_delete_user_other(client, user_self, user_other):
 
     response = client.get(
         reverse(
-            'users:user-delete',
+            'users:delete',
             kwargs={'pk': user_self.pk},
         ),
     )
@@ -90,11 +90,11 @@ def test_delete_user_other(client, user_self, user_other):
 
     response = client.post(
         reverse(
-            'users:user-delete',
+            'users:delete',
             kwargs={'pk': user_self.pk},
         ),
     )
-    assert response.url == reverse('users:users')
+    assert response.url == reverse('users:list')
     assert TMUser.objects.all().count() == 2
 
 
@@ -104,7 +104,7 @@ def test_update_user_self(client, user_self):
 
     response = client.get(
         reverse(
-            'users:user-update',
+            'users:update',
             kwargs={'pk': user_self.pk},
         ),
     )
@@ -112,7 +112,7 @@ def test_update_user_self(client, user_self):
 
     response = client.post(
         reverse(
-            'users:user-update',
+            'users:update',
             kwargs={'pk': user_self.pk},
         ),
         data={
@@ -124,7 +124,7 @@ def test_update_user_self(client, user_self):
         },
     )
     assert response.status_code == HTTPStatus.FOUND
-    assert response.url == reverse('users:users')
+    assert response.url == reverse('users:list')
 
     user = TMUser.objects.get(username='johndoe')
     assert user.full_name() == 'John_UPD Doe_UPD'
