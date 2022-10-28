@@ -34,6 +34,7 @@ class LabelCreateView(
     success_message = _('Label successfully created')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Create label')
         context['form_button'] = _('Create')
@@ -52,6 +53,7 @@ class LabelUpdateView(
     success_message = _('Label successfully updated')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Change label')
         context['form_button'] = _('Change')
@@ -85,6 +87,7 @@ class LabelDeleteView(
         return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['title'] = _('Delete label')
         return context

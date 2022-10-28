@@ -3,6 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
 
+USER_NOT_LOGGED_MESSAGE = 'You are not logged in! Please log in.'
+
 
 class AuthorizationRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     login_url = 'login'
@@ -24,7 +26,5 @@ class AuthorizationRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
             messages.error(self.request, self.message_user_not_authorized)
             return redirect(self.url_user_not_authorized)
         else:
-            messages.error(
-                self.request, _('You are not logged in! Please log in.'),
-            )
+            messages.error(self.request, _(USER_NOT_LOGGED_MESSAGE))  # noqa: WPS503, E501
             return redirect(self.login_url)

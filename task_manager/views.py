@@ -14,6 +14,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     success_message = _('Success login')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Login')
         context['form_button'] = _('Logon')

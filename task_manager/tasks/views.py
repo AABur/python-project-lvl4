@@ -40,6 +40,7 @@ class TaskCreateView(
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Create task')
         context['form_button'] = _('Create')
@@ -58,6 +59,7 @@ class TaskUpdateView(
     success_message = _('Task successfully updated')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Change task')
         context['form_button'] = _('Change')
@@ -75,6 +77,7 @@ class TaskDeleteView(
     success_message = _('Task successfully deleted')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['title'] = _('Delete task')
         return context

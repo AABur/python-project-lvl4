@@ -34,14 +34,13 @@ if dotenv_file.is_file():
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     'localhost',
     '.herokuapp.com',
     'webserver',
-    '127.0.0.1'
+    '127.0.0.1',
 ]
 
 
@@ -176,4 +175,4 @@ rollbar.init(**ROLLBAR)
 
 
 # Configure Django App for Heroku.
-django_on_heroku.settings(locals(), db_ssl_required=False)
+django_on_heroku.settings(locals(), db_ssl_required=False)  # noqa: WPS421

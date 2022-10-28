@@ -34,6 +34,7 @@ class StatusCreateView(
     success_message = _('Status successfully created')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Create status')
         context['form_button'] = _('Create')
@@ -52,6 +53,7 @@ class StatusUpdateView(
     success_message = _('Status successfully updated')
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['form_title'] = _('Change status')
         context['form_button'] = _('Change')
@@ -85,6 +87,7 @@ class StatusDeleteView(
         return redirect(self.success_url)
 
     def get_context_data(self, **kwargs):
+        """Return context data for template."""
         context = super().get_context_data(**kwargs)
         context['title'] = _('Delete status')
         return context
