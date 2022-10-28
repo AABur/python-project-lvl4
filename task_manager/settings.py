@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 dotenv_file = Path(BASE_DIR, '.env')
-if os.path.isfile(dotenv_file):
+if dotenv_file.is_file():
     load_dotenv(dotenv_file)
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -91,7 +91,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
             ],
         },
     },
