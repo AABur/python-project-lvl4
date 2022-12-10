@@ -1,5 +1,5 @@
 install: ## install dependencies
-	@poetry install
+	poetry install
 
 test: ## run tests
 	poetry run coverage run --source=task_manager -m pytest tests
@@ -14,9 +14,9 @@ selfcheck: ## check pyproject.toml
 	poetry check
 
 check: ## selfcheck + test + lint
-	@make selfcheck
-	@make test
-	@make lint
+	make selfcheck
+	make test
+	make lint
 
 run: ## run local server
 	poetry run python manage.py runserver
