@@ -53,7 +53,7 @@ class UserDeleteView(
 
     url_user_not_authorized = USERS_LIST_URL_NAME
     message_user_not_authorized = _(
-        'You have no permissions to update another user.',
+        'You have no permissions to update another user',
     )
 
     def delete(self, request, *args, **kwargs):
@@ -94,7 +94,7 @@ class UserUpdateView(
 
     url_user_not_authorized = USERS_LIST_URL_NAME
     message_user_not_authorized = _(
-        'You have no permissions to update another user.',
+        'You have no permissions to update another user',
     )
 
     def check_authorisation(self):
