@@ -34,7 +34,9 @@ createsuperuser: ## createsuperuser
 	poetry run python manage.py createsuperuser
 
 setup: ## initial setup
-	install migrate createsuperuser
+	make install
+	make migrate
+	make createsuperuser
 
 clean: ## clean up python cache files
 	find . -type f -name *.pyc -delete
